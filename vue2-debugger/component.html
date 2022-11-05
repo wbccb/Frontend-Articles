@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='utf-8'>
+  <title>Vue.js wrapper component example (jquery plugin: select2)</title>
+  <!-- Delete ".min" for console warnings in development -->
+  <script src='./vue.js'></script>
+  <script src='https://unpkg.com/jquery'></script>
+  <script src='https://unpkg.com/select2@4.0.3'></script>
+  <link href='https://unpkg.com/select2@4.0.3/dist/css/select2.min.css' rel='stylesheet'>
+  <style>
+    html, body {
+      font: 13px/18px sans-serif;
+    }
+
+    select {
+      min-width: 300px;
+    }
+  </style>
+</head>
+<body>
+
+<div id='el'>
+</div>
+
+<script type='text/x-template' id='demo-template'>
+  <div id='children1'>
+    <p id='children1_1'>Selected: {{ selected }}</p>
+    <component-select :options='options' v-model='selected' id='children1_2_component'>
+    </component-select>
+  </div>
+</script>
+
+<script type='text/x-template' id='select2-template'>
+  <select id='children_component_select'>
+    <option disabled value='0' id='children_component_select_option'>Select one</option>
+  </select>
+</script>
+
+<script>
+  Vue.component('component-select', {
+    props: ['options', 'value'],
+    template: '#select2-template',
+    mounted: function() {
+      var vm = this
+      $(this.$el)
+        .val(this.value)
+        // init select2
+        .select2({ data: this.options })
+        // emit event on change.
+        .on('change', function() {
+          vm.$emit('input', this.value)
+        })
+    },
+    watch: {
+      value: function(value) {
+        // update value
+        $(this.$el).val(value).trigger('change')
+      },
+      options: function(options) {
+        // update options
+        $(this.$el).select2({ data: options })
+      }
+    },
+    destroyed: function() {
+      $(this.$el).off().select2('destroy')
+    }
+  })
+
+  var vm = new Vue({
+    el: '#el',
+    template: '#demo-template',
+    data: {
+      selected: 0,
+      options: [
+        { id: 1, text: 'Hello' },
+        { id: 2, text: 'World' }
+      ]
+    }
+  })
+</script>
+</body>
+</html>
