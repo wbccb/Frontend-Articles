@@ -2542,6 +2542,12 @@
           }
           // set parent
           vnode.parent = _parentVnode;
+          var id = "";
+          if(vnode && vnode.data && vnode.data.attrs) {
+              id = vnode.data.attrs.id;
+          }
+          console.warn("_render", vnode.tag, id);
+          debugger;
           return vnode;
       };
   }
@@ -4670,6 +4676,7 @@
   var uid = 0;
   function initMixin$1(Vue) {
       Vue.prototype._init = function (options) {
+          console.log("Vue.prototype._init");
           var vm = this;
           // a uid
           vm._uid = uid++;
@@ -6507,6 +6514,11 @@
       }
       var creatingElmInVPre = 0;
       function createElm(vnode, insertedVnodeQueue, parentElm, refElm, nested, ownerArray, index) {
+          var id = "";
+          if(vnode && vnode.data && vnode.data.attrs) {
+              id = vnode.data.attrs.id;
+          }
+          console.warn("createElm", vnode.tag, id);
           if (isDef(vnode.elm) && isDef(ownerArray)) {
               // This vnode was used in a previous render!
               // now it's used as a new node, overwriting its elm would cause
@@ -7138,6 +7150,7 @@
                           ancestor = ancestor.parent;
                       }
                   }
+                  debugger;
                   // destroy old node
                   if (isDef(parentElm)) {
                       removeVnodes([oldVnode], 0, 0);
@@ -7148,6 +7161,7 @@
               }
           }
           invokeInsertHook(vnode, insertedVnodeQueue, isInitialPatch);
+          debugger;
           return vnode.elm;
       };
   }
@@ -9293,6 +9307,7 @@
   Vue.prototype.__patch__ = inBrowser ? patch : noop;
   // public mount method
   Vue.prototype.$mount = function (el, hydrating) {
+      console.log("Vue.prototype.$mount");
       el = el && inBrowser ? query(el) : undefined;
       return mountComponent(this, el, hydrating);
   };
