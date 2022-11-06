@@ -3605,6 +3605,11 @@
             }
             // set parent
             vnode.parent = _parentVnode;
+            var id = "";
+            if(vnode && vnode.data && vnode.data.attrs) {
+                id = vnode.data.attrs.id;
+            }
+            console.warn("_render", vnode.tag, id);
             return vnode
         };
     }
@@ -4973,6 +4978,7 @@
 
     function initMixin (Vue) {
         Vue.prototype._init = function (options) {
+            console.log("Vue.prototype._init");
             var vm = this;
             // a uid
             vm._uid = uid$3++;
@@ -5951,6 +5957,11 @@
             ownerArray,
             index
         ) {
+            var id = "";
+            if(vnode && vnode.data && vnode.data.attrs) {
+                id = vnode.data.attrs.id;
+            }
+            console.warn("createElm", vnode.tag, id);
             if (isDef(vnode.elm) && isDef(ownerArray)) {
                 // This vnode was used in a previous render!
                 // now it's used as a new node, overwriting its elm would cause
@@ -5990,10 +6001,12 @@
 
                 /* istanbul ignore if */
                 {
+                    console.info("createElm-createChildren()");
                     createChildren(vnode, children, insertedVnodeQueue);
                     if (isDef(data)) {
                         invokeCreateHooks(vnode, insertedVnodeQueue);
                     }
+                    console.error("createElm-insert", vnode.tag, id, "parentElm:", parentElm);
                     insert(parentElm, vnode.elm, refElm);
                 }
 
@@ -6022,6 +6035,11 @@
                 // in that case we can just return the element and be done.
                 if (isDef(vnode.componentInstance)) {
                     initComponent(vnode, insertedVnodeQueue);
+                  var id = "";
+                  if(vnode && vnode.data && vnode.data.attrs) {
+                      id = vnode.data.attrs.id;
+                  }
+                  console.error("createElm-createComponent()-insert", vnode.tag, id, "parentElm:", parentElm);
                     insert(parentElm, vnode.elm, refElm);
                     if (isTrue(isReactivated)) {
                         reactivateComponent(vnode, insertedVnodeQueue, parentElm, refElm);
@@ -9087,6 +9105,7 @@
         el,
         hydrating
     ) {
+        console.log("Vue.prototype.$mount", el);
         el = el && inBrowser ? query(el) : undefined;
         return mountComponent(this, el, hydrating)
     };
