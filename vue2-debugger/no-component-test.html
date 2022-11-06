@@ -24,20 +24,7 @@
   <body>
     <div id="demo">
       <h1 id='children1'>Latest Vue.js Commits</h1>
-      <template v-for="branch in branches">
-        <input type="radio"
-         id='children2_1'
-          :value="branch"
-          name="branch"
-          v-model="currentBranch">
-        <label :for="branch" id='children2_2'>{{ branch }}</label>
-      </template>
-      <p id='children3'>vuejs/vue@{{ currentBranch }}</p>
-      <ul id='children4'>
-        <li v-for="record in commits" id='children4_1'>
-          <a :href="record.html_url" target="_blank" class="commit" id='children4_2'>{{ record.sha.slice(0, 7) }}</a>
-        </li>
-      </ul>
+      <p id='children3'>vuejs/vue@</p>
     </div>
     <script>
       var apiURL = 'https://api.github.com/repos/vuejs/vue/commits?per_page=3&sha='
@@ -79,7 +66,7 @@
             var xhr = new XMLHttpRequest()
             xhr.open('GET', apiURL + self.currentBranch)
             xhr.onload = function () {
-              self.commits = JSON.parse(xhr.responseText)
+              // self.commits = JSON.parse(xhr.responseText)
               console.log(self.commits[0].html_url)
             }
             xhr.send()

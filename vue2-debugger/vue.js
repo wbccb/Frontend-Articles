@@ -1776,6 +1776,7 @@
       else if (normalizationType === SIMPLE_NORMALIZE) {
           children = simpleNormalizeChildren(children);
       }
+      debugger;
       var vnode, ns;
       if (typeof tag === 'string') {
           var Ctor = void 0;
@@ -1788,24 +1789,29 @@
                   warn$2("The .native modifier for v-on is only valid on components but it was used on <".concat(tag, ">."), context);
               }
               vnode = new VNode(config.parsePlatformTagName(tag), data, children, undefined, undefined, context);
+              console.info("vnode=config.isReservedTag(tag)", tag, vnode.data.attrs.id);
           }
           else if ((!data || !data.pre) &&
               isDef((Ctor = resolveAsset(context.$options, 'components', tag)))) {
               // component
               vnode = createComponent(Ctor, data, context, children, tag);
+              console.info("vnode=createComponent", tag, vnode.data.attrs.id);
           }
           else {
               // unknown or unlisted namespaced elements
               // check at runtime because it may get assigned a namespace when its
               // parent normalizes children
               vnode = new VNode(tag, data, children, undefined, undefined, context);
+              console.info("vnode=unknown or unlisted namespaced elements", tag, vnode.data.attrs.id);
           }
       }
       else {
           // direct component options / constructor
           vnode = createComponent(tag, data, context, children);
+          console.warn("vnode=createComponent direct", tag, vnode.data.attrs.id);
       }
       if (isArray(vnode)) {
+          console.warn("isArray(vnode)", tag, vnode.data.attrs.id);
           return vnode;
       }
       else if (isDef(vnode)) {
@@ -1813,9 +1819,11 @@
               applyNS(vnode, ns);
           if (isDef(data))
               registerDeepBindings(data);
+          console.warn("isDef(vnode)", tag, vnode.data.attrs.id);
           return vnode;
       }
       else {
+          console.warn("createEmptyVNode");
           return createEmptyVNode();
       }
   }
@@ -6551,10 +6559,12 @@
                   ? nodeOps.createElementNS(vnode.ns, tag)
                   : nodeOps.createElement(tag, vnode);
               setScope(vnode);
+              console.info("createElm-createChildren()");
               createChildren(vnode, children, insertedVnodeQueue);
               if (isDef(data)) {
                   invokeCreateHooks(vnode, insertedVnodeQueue);
               }
+              console.error("createElm-insert", vnode.tag, id, "parentElm:", parentElm);
               insert(parentElm, vnode.elm, refElm);
               if (data && data.pre) {
                   creatingElmInVPre--;
@@ -6582,6 +6592,11 @@
               // in that case we can just return the element and be done.
               if (isDef(vnode.componentInstance)) {
                   initComponent(vnode, insertedVnodeQueue);
+                  var id = "";
+                  if(vnode && vnode.data && vnode.data.attrs) {
+                      id = vnode.data.attrs.id;
+                  }
+                  console.error("createElm-createComponent()-insert", vnode.tag, id, "parentElm:", parentElm);
                   insert(parentElm, vnode.elm, refElm);
                   if (isTrue(isReactivated)) {
                       reactivateComponent(vnode, insertedVnodeQueue, parentElm, refElm);
@@ -9307,7 +9322,7 @@
   Vue.prototype.__patch__ = inBrowser ? patch : noop;
   // public mount method
   Vue.prototype.$mount = function (el, hydrating) {
-      console.log("Vue.prototype.$mount");
+      console.log("Vue.prototype.$mount", el);
       el = el && inBrowser ? query(el) : undefined;
       return mountComponent(this, el, hydrating);
   };
