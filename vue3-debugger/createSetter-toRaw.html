@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='utf-8'>
+  <title>Vue.js wrapper component example (jquery plugin: select2)</title>
+  <script src='./vue.global.js'></script>
+</head>
+<body>
+
+<div id='el'>
+  {{proxy.count}}
+</div>
+
+<script>
+  const { effect, onMounted, reactive, createApp } = Vue;
+  const App = {
+    setup(props, ctx) {
+      const obj = {};
+      const objProto = {count: 1};
+      const proxy = reactive(obj);
+      const baseProxy = reactive(objProto);
+      Object.setPrototypeOf(proxy, baseProxy);
+
+      effect(()=> {
+        // 需要把vue.global.js的createSetter()的target === toRaw(receiver）注释掉，然后就会发现触发了effect两次执行
+        console.error("测试:"+proxy.count);
+      })
+
+      onMounted(()=> {
+        setTimeout(()=> {
+          proxy.count++; // 触发上面effec执行两次
+        }, 2000);
+      });
+
+      return {
+        proxy
+      };
+    },
+  };
+  const app = createApp(App);
+  app.mount("#el");
+</script>
+</body>
+</html>
