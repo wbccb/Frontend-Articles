@@ -2,8 +2,8 @@
 
 ## 工程化
 
-#### 1. [webpack热更新原理](https://segmentfault.com/a/1190000042587412)
-#### 2. (WIP)webpack整体流程分析
+#### 1. [图解webpack5热更新HRM](https://segmentfault.com/a/1190000042587412)
+#### 2. (WIP)webpack5整体流程分析
 #### 3. (WIP)vue-cli整体流程分析
 #### 4. (TODO)vite整体流程分析
 
