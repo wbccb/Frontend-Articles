@@ -9,12 +9,16 @@
 
 <div id='el'>
 </div>
+<button id="testBtn">点击改变proxy.count</button>
+<button id="testBtn1">点击增加proxy属性</button>
+<button id="testBtn2">点击删除proxy属性</button>
+
 
 <script>
   const { effect, onMounted, reactive, createApp, watchEffect } = Vue;
   const App = {
     setup(props, ctx) {
-      const proxy = reactive({count: 1, count1: 2});
+      const proxy = reactive({count: 1, count1: 2, newKey0: 4});
 
       watchEffect(()=> {
         console.error("object.count", proxy.count);
@@ -24,7 +28,20 @@
         console.info("key in object", "count" in proxy);
       });
 
-      return {};
+      document.getElementById("testBtn").addEventListener("click", ()=> {
+        proxy.count = proxy.count + 1;
+      });
+      var id = 1;
+      document.getElementById("testBtn1").addEventListener("click", ()=> {
+        proxy["newKey"+id++] = 3;
+      });
+      document.getElementById("testBtn2").addEventListener("click", ()=> {
+        delete proxy["newKey"+(id-1)]
+      });
+
+
+      return {
+      };
     },
   };
   const app = createApp(App);
