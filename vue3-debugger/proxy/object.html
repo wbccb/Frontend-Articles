@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='utf-8'>
+  <title>Vue.js wrapper component example (jquery plugin: select2)</title>
+  <script src='./vue.object.js'></script>
+</head>
+<body>
+
+<div id='el'>
+</div>
+
+<script>
+  const { effect, onMounted, reactive, createApp, watchEffect } = Vue;
+  const App = {
+    setup(props, ctx) {
+      const proxy = reactive({count: 1, count1: 2});
+
+      watchEffect(()=> {
+        console.error("object.count", proxy.count);
+        for(let key in proxy) {
+          console.warn("for in object", key);
+        }
+        console.info("key in object", "count" in proxy);
+      });
+
+      return {};
+    },
+  };
+  const app = createApp(App);
+  app.mount("#el");
+</script>
+</body>
+</html>
