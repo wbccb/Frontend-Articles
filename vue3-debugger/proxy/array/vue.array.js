@@ -658,8 +658,7 @@ var Vue = (function (exports) {
             if (!dep) {
                 depsMap.set(key, (dep = createDep()));
             }
-            const eventInfo = { effect: activeEffect, target, type, key }
-            ;
+            const eventInfo = { effect: activeEffect, target, type, key };
             trackEffects(dep, eventInfo);
         }
     }
@@ -789,8 +788,11 @@ var Vue = (function (exports) {
         const instrumentations = {};
         ['includes', 'indexOf', 'lastIndexOf'].forEach(key => {
             instrumentations[key] = function (...args) {
+                console.error("createArrayInstrumentations触发"+key);
                 const arr = toRaw(this);
+                console.error("createArrayInstrumentations track 准备开始遍历length");
                 for (let i = 0, l = this.length; i < l; i++) {
+                    console.error("createArrayInstrumentations track", i);
                     track(arr, "get" /* GET */, i + '');
                 }
                 // we run the method using the original args first (which may be reactive)
@@ -814,6 +816,7 @@ var Vue = (function (exports) {
         });
         return instrumentations;
     }
+    var temp = "";
     function createGetter(isReadonly = false, shallow = false) {
         return function get(target, key, receiver) {
             if (key === "__v_isReactive" /* IS_REACTIVE */) {
@@ -842,10 +845,13 @@ var Vue = (function (exports) {
             }
 
             const res = Reflect.get(target, key, receiver);
+
             if (isSymbol(key) ? builtInSymbols.has(key) : isNonTrackableKeys(key)) {
+                console.error("不会track", "isSymbol", key);
                 return res;
             }
             if (!isReadonly) {
+                console.info("track", "get", key);
                 track(target, "get" /* GET */, key);
                 debugger;
             }

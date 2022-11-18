@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='utf-8'>
+  <title>Vue.js wrapper component example (jquery plugin: select2)</title>
+  <script src='vue.array.js'></script>
+</head>
+<body>
+
+<div id='el'>
+</div>
+<button id="testBtn">点击改变proxy.count</button>
+<button id="testBtn1">点击增加proxy属性</button>
+<button id="testBtn2">点击删除proxy属性</button>
+
+
+<script>
+  const { effect, onMounted, reactive, createApp, watchEffect, watch, computed } = Vue;
+  const App = {
+    setup(props, ctx) {
+      const array = ["item1", "item2", "item3", "item4", "item5"];
+      const proxy = reactive(array);
+
+
+      effect(()=> {
+        console.error("proxy[0]正常显示", proxy[2]);
+        console.error("proxy[20]正常显示", proxy[20]);
+      });
+      effect(()=> {
+        console.info("proxy.length", proxy.length);
+      });
+      effect(()=> {
+        for(let key in proxy) {
+          console.warn("for in array", key);
+        }
+      });
+      effect(()=> {
+        for(let value of proxy) {
+          console.warn("for of array", value);
+        }
+      });
+
+      effect(()=> {
+        console.warn("=====proxy.includes(原始值'item1')=====");
+        const res0 = proxy.includes("item44443");
+        console.log("proxy.includes('item1')", res0);
+        console.warn("=====proxy.includes(原始值'item1')=====");
+        console.warn("=====不拦截key后的打印：proxy.includes(原始对象array[2])=====");
+        const res = proxy.includes(array[1]);
+        console.log("proxy.includes(array[2])", res);
+        console.warn("=====不拦截key后的打印：proxy.includes(原始对象array[2])=====");
+
+        console.warn("=====不拦截key后的打印：proxy.includes(代理对象proxy[2])=====");
+        const res1 = proxy.includes(proxy[3]);
+        console.log("proxy.includes(proxy[2])", res1);
+        console.warn("=====不拦截key后的打印：proxy.includes(代理对象proxy[2])=====");
+      });
+
+      const arrayObject = {item: 1};
+      const arrayObjectProxy = reactive([arrayObject]);
+      effect(()=> {
+        const res2 = arrayObjectProxy.includes(arrayObjectProxy[0]);
+        console.log("arrayObjectProxy.includes(arrayObjectProxy[0])", res2);
+        const res3 = arrayObjectProxy.includes(arrayObject);
+        console.log("arrayObjectProxy.includes(arrayObject)", res3);
+      });
+
+
+      // document.getElementById("testBtn").addEventListener("click", ()=> {
+      //   delete proxy[0];
+      // });
+      // var id = 1;
+      // document.getElementById("testBtn1").addEventListener("click", ()=> {
+      //   proxy["newKey"+id++] = 3;
+      // });
+      // document.getElementById("testBtn2").addEventListener("click", ()=> {
+      //   delete proxy["newKey"+(id-1)]
+      // });
+
+
+      return {
+      };
+    },
+  };
+  const app = createApp(App);
+  app.mount("#el");
+</script>
+</body>
+</html>
