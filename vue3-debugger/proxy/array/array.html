@@ -3,28 +3,29 @@
 <head>
   <meta charset='utf-8'>
   <title>Vue.js wrapper component example (jquery plugin: select2)</title>
-  <script src='vue.array.js'></script>
+  <script src='vue.array.write.js'></script>
 </head>
 <body>
 
 <div id='el'>
 </div>
-<button id="testBtn">点击改变proxy.count</button>
-<button id="testBtn1">点击增加proxy属性</button>
-<button id="testBtn2">点击删除proxy属性</button>
+<button id="testBtn">更新array.item</button>
+<button id="testBtn1">array.push(2)</button>
+<button id="testBtn2">array进行排序</button>
+<button id="testBtn3">改变array.length</button>
 
 
 <script>
-  const { effect, onMounted, reactive, createApp, watchEffect, watch, computed } = Vue;
+
+  const { effect, onMounted, reactive, createApp, watchEffect, watch, computed, toRaw } = Vue;
   const App = {
     setup(props, ctx) {
-      const array = ["item1", "item2", "item3", "item4", "item5"];
+      const array = ["item2", "item1", "item3", "item4", "item5"];
       const proxy = reactive(array);
 
-
       effect(()=> {
-        console.error("proxy[0]正常显示", proxy[2]);
-        console.error("proxy[20]正常显示", proxy[20]);
+        console.error("proxy[2]正常显示", proxy[1]);
+        // console.error("proxy[20]正常显示", proxy[20]);
       });
       effect(()=> {
         console.info("proxy.length", proxy.length);
@@ -65,17 +66,47 @@
         console.log("arrayObjectProxy.includes(arrayObject)", res3);
       });
 
+      effect(()=> {
+        proxy.push(2);
+      });
 
-      // document.getElementById("testBtn").addEventListener("click", ()=> {
-      //   delete proxy[0];
-      // });
-      // var id = 1;
-      // document.getElementById("testBtn1").addEventListener("click", ()=> {
-      //   proxy["newKey"+id++] = 3;
-      // });
-      // document.getElementById("testBtn2").addEventListener("click", ()=> {
-      //   delete proxy["newKey"+(id-1)]
-      // });
+      effect(()=> {
+        let newConcatArray = proxy.concat([233,44]);
+        console.error("newArray", newConcatArray);
+        // let newJoinString = proxy.join(",");
+        // console.error("newJoinString", newJoinString);
+      });
+
+
+      const array1 = [1, 2, 3, 4];
+      const proxy1 = reactive(array1);
+      effect(()=> {
+        console.warn("start======proxy.sort1========start");
+        proxy1.sort((a, b)=> a-b);
+        console.warn("end======proxy.sort1========end");
+      });
+
+      effect(()=> {
+        console.warn("start======proxy.sort2========start");
+        proxy1.sort((a, b)=> b-a);
+        console.error("proxy.sort2", toRaw(proxy1));
+        console.warn("end======proxy.sort2========end");
+      });
+
+
+      document.getElementById("testBtn").addEventListener("click", ()=> {
+        // proxy[2] = "3333";
+        proxy[100] = "22";
+      });
+      document.getElementById("testBtn1").addEventListener("click", ()=> {
+        proxy.push(2);
+      });
+      document.getElementById("testBtn2").addEventListener("click", ()=> {
+        proxy.sort((a, b)=> a.localeCompare(b))
+      });
+      document.getElementById("testBtn3").addEventListener("click", ()=> {
+        proxy.length = 1;
+      });
 
 
       return {
