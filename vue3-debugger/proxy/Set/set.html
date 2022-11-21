@@ -10,17 +10,20 @@
 <div id='el'>
 </div>
 <button id="testBtn">set.add</button>
-<button id="testBtn1">点击增加proxy属性</button>
+<button id="testBtn1">点击增加proxyMap属性</button>
 <button id="testBtn2">map.delete("item1")</button>
 
 
 <script>
-    const {effect, onMounted, reactive, createApp, watchEffect} = Vue;
+    const {effect, onMounted, reactive, createApp, watchEffect, toRaw} = Vue;
     const App = {
         setup(props, ctx) {
 
-            const set = new Set([1, 2, 3]);
+            const set = new Set(["haha1", "hahah2", "haha3"]);
             const proxySet = reactive(set);
+            console.info("原始Set比较", set[Symbol.iterator] === set.entries);
+            console.info("代理Set比较", proxySet[Symbol.iterator] === proxySet.entries);
+            console.info("代理Set.toString()比较", proxySet[Symbol.iterator].toString() === proxySet.entries.toString());
 
 
             const object = {
@@ -28,35 +31,79 @@
                 "item2": 333
             }
             const map = new Map(Object.entries(object));
+            console.warn("原始对象比较", map[Symbol.iterator] === map.entries);
             const objectKey = {test: 1};
             const reactiveKey = reactive(objectKey);
             map.set(reactiveKey, "testReactive");
-            const proxy = reactive(map);
+            const proxyMap = reactive(map);
+            console.warn("代理对象比较", proxyMap[Symbol.iterator] === proxyMap.entries);
+            console.warn("代理对象toString比较", proxyMap[Symbol.iterator].toString() === proxyMap.entries.toString());
 
-            const objectKeyProxy = {testProxy: 1};
-            const reactiveKeyProxy = reactive(objectKeyProxy);
-            proxy.set(reactiveKeyProxy, "testProxyReactive");
+
+            // const objectKeyProxy = {testProxy: 1};
+            // const reactiveKeyProxy = reactive(objectKeyProxy);
+            // proxyMap.set(reactiveKeyProxy, "testProxyReactive");
+
+            // effect(() => {
+            //     console.log("map.size", proxyMap.size);
+            //     console.log("map.get(普通number)", proxyMap.get(0));
+            //     console.log("map.get(proxyMap对象)", proxyMap.get(reactiveKey));
+            //     console.log("map.get(原始对象)", proxyMap.get(objectKey));
+            //     console.log("map.get(proxyMap对象之后才set的)", proxyMap.get(reactiveKeyProxy));
+            //     console.log("map.has", proxyMap.has(4));
+            // });
+            //
+            // effect(() => {
+            //     console.log("Set.add", proxySet.add(5));
+            //     console.log("Map.set", proxyMap.set(0, 44444));
+            //     console.log("size.delete", proxyMap.delete("item2"));
+            //     console.log("Map.clear", proxyMap.clear());
+            // });
 
             effect(() => {
-                console.log("map.size", proxy.size);
-                console.log("map.get(普通number)", proxy.get(0));
-                console.log("map.get(proxy对象)", proxy.get(reactiveKey));
-                console.log("map.get(原始对象)", proxy.get(objectKey));
-                console.log("map.get(proxy对象之后才set的)", proxy.get(reactiveKeyProxy));
-                console.log("map.has", proxy.has(4));
+                // proxyMap.forEach((...args) => {
+                //     console.warn("proxyMap.forEach的item结果是");
+                //     console.info(...args);
+                // });
+                console.warn("===========proxyMap.entities()===========");
+                for (let [key, value] of proxyMap[Symbol.iterator]()) {
+                    console.info("Symbol.iterator key:", key, "-------value:", value);
+                }
+                for (let [key, value] of proxyMap.entries()) {
+                    console.error("entries key:", key, "-------value:", value);
+                }
+                console.info(proxyMap[Symbol.iterator]() === proxyMap.entries());
+                console.warn("===========proxyMap.entities()===========");
+
+                console.error("===========proxySet.entities()===========");
+                for (let value of proxySet[Symbol.iterator]()) {
+                    console.info("Symbol.iterator key:", "-------value:", value);
+                }
+                for (let [key, value] of proxySet.entries()) {
+                    console.warn("entries key:", key, "-------value:", value);
+                }
+                console.info(proxySet[Symbol.iterator]() === proxySet.entries());
+                console.error("===========proxySet.entities()===========");
             });
 
-            effect(()=> {
-              console.log("Set.add", proxySet.add(5));
-              console.log("Map.set", proxy.set(0, 44444));
-              console.log("size.delete", proxy.delete("item2"));
-              console.log("Map.clear", proxy.clear());
-            });
-
-            // effect(()=> {
-            //   set.forEach((...args)=> {
-            //     console.info("set.forEach item", ...args);
-            //   });
+            // effect(() => {
+            //     console.warn("===========proxyMap()===========");
+            //     for (let [key, value] of proxyMap.keys()) {
+            //         console.info("Symbol.iterator key:", key, "-------value:", value);
+            //     }
+            //     for (let [key, value] of proxyMap.values()) {
+            //         console.error("entries key:", key, "-------value:", value);
+            //     }
+            //     console.warn("===========proxyMap()===========");
+            //
+            //     console.error("===========proxySet===========");
+            //     for (let value of proxySet.keys()) {
+            //         console.info("Symbol.iterator key:", "-------value:", value);
+            //     }
+            //     for (let [key, value] of proxySet.values()) {
+            //         console.warn("entries key:", key, "-------value:", value);
+            //     }
+            //     console.error("===========proxySet===========");
             // });
 
             return {};

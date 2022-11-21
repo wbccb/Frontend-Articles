@@ -1077,6 +1077,7 @@ var Vue = (function (exports) {
     }
     function createForEach(isReadonly, isShallow) {
         return function forEach(callback, thisArg) {
+            debugger;
             const observed = this;
             const target = observed["__v_raw" /* RAW */];
             const rawTarget = toRaw(target);
