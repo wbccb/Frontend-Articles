@@ -840,6 +840,9 @@ var Vue = (function (exports) {
             if (!isReadonly && targetIsArray && hasOwn(arrayInstrumentations, key)) {
                 return Reflect.get(arrayInstrumentations, key, receiver);
             }
+            console.error("start=========Reflect.get========start");
+            console.info(receiver, "      key:  ", key);
+            console.error("start=========Reflect.get========start");
             const res = Reflect.get(target, key, receiver);
             if (isSymbol(key) ? builtInSymbols.has(key) : isNonTrackableKeys(key)) {
                 return res;
@@ -885,6 +888,10 @@ var Vue = (function (exports) {
             const hadKey = isArray(target) && isIntegerKey(key)
                 ? Number(key) < target.length
                 : hasOwn(target, key);
+            console.warn("start=========Reflect.set========start");
+            console.info(receiver);
+            console.info(key);
+            console.warn("start=========Reflect.set========start");
             const result = Reflect.set(target, key, value, receiver);
             // don't trigger if target is something up in the prototype chain of original
             if (target === toRaw(receiver)) {

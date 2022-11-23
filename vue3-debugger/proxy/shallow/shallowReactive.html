@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='utf-8'>
+    <title>Vue.js wrapper component example (jquery plugin: select2)</title>
+    <script src='vue.shallow.js'></script>
+</head>
+<body>
+
+<div id='el'></div>
+<button id="testBtn">shallowRef改变值</button>
+
+<script>
+    const {effect, onMounted, reactive, createApp, watchEffect, toRaw, ref, shallowReactive} = Vue;
+    const App = {
+        setup(props, ctx) {
+
+            const reactiveObj1 = shallowReactive({count: {temp: 3}})
+            const reactiveObj = reactive({count: {temp: 3}})
+            effect(()=> {
+                console.warn("===========effect触发===========");
+                console.log(reactiveObj1.count.temp);
+                console.warn("===========effect触发===========");
+
+                console.warn("===========reactiveObj effect触发===========");
+                console.log(reactiveObj.count.temp);
+                console.warn("===========reactiveObj effect触发===========");
+            });
+
+
+            document.getElementById("testBtn").addEventListener("click", ()=> {
+                reactiveObj1.count.temp = new Date().getTime();
+                // reactiveObj1.count = new Date().getTime();
+
+                reactiveObj.count.temp = new Date().getTime();
+            });
+
+            return {};
+        },
+    };
+    const app = createApp(App);
+    app.mount("#el");
+</script>
+</body>
+</html>
