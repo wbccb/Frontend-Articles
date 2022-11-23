@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='utf-8'>
+    <title>Vue.js wrapper component example (jquery plugin: select2)</title>
+    <script src='vue.shallow.js'></script>
+</head>
+<body>
+
+<div id='el'></div>
+<button id="testBtn">shallowRef改变值</button>
+
+<script>
+    const {effect, onMounted, reactive, createApp, watchEffect, toRaw, ref, shallowRef} = Vue;
+    const App = {
+        setup(props, ctx) {
+
+            const testData = reactive({count: 1});
+            const dataRef = ref(testData);
+            const shallowDataRef = shallowRef(testData);
+
+            effect(()=> {
+                console.debug("dataRef.value.count change", dataRef.value.count);
+                console.info("shallowDataRef.value.count change", shallowDataRef.value.count);
+            });
+
+
+            document.getElementById("testBtn").addEventListener("click", ()=> {
+                dataRef.value.count = 2;
+                shallowDataRef.value.count = 33;
+            });
+
+            return {};
+        },
+    };
+    const app = createApp(App);
+    app.mount("#el");
+</script>
+</body>
+</html>
