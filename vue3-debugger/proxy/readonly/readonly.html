@@ -13,6 +13,7 @@
 
     <button id="testBtn">original.count++</button>
     <button id="testBtn1">copy.count++</button>
+    <button id="testBtn2">深度嵌套的key改变值copy.count.temp++</button>
 </div>
 
 
@@ -20,26 +21,36 @@
     const {effect, readonly, reactive, createApp, watchEffect, toRaw, ref, shallowRef} = Vue;
     const App = {
         setup(props, ctx) {
-            const original = reactive({count: 0})
+            // const original = reactive({count: 0});
+            // const copy = readonly(original);
+            //
+            // watchEffect(() => {
+            //     console.info("----------------------------------------------")
+            //     // 用来做响应性追踪
+            //     console.log(copy.count)
+            //     console.info("----------------------------------------------")
+            //
+            // })
+            //
+            // document.getElementById("testBtn").addEventListener("click", ()=> {
+            //     // 更改源属性会触发其依赖的侦听器
+            //     original.count++
+            // });
+            // document.getElementById("testBtn1").addEventListener("click", ()=> {
+            //     // 更改该只读副本将会失败，并会得到一个警告
+            //     copy.count++ // warning!
+            // });
 
-            debugger;
-            const copy = readonly(original)
-
+            const original = reactive({count: {temp: 333, temp1: 455}, count1: 4444});
+            const copy = readonly(original);
             watchEffect(() => {
                 console.info("----------------------------------------------")
                 // 用来做响应性追踪
-                console.log(copy.count)
+                console.log(copy.count.temp);
                 console.info("----------------------------------------------")
-
-            })
-
-            document.getElementById("testBtn").addEventListener("click", ()=> {
-                // 更改源属性会触发其依赖的侦听器
-                original.count++
             });
-            document.getElementById("testBtn1").addEventListener("click", ()=> {
-                // 更改该只读副本将会失败，并会得到一个警告
-                copy.count++ // warning!
+            document.getElementById("testBtn2").addEventListener("click", () => {
+                copy.count.temp = new Date().getTime();
             });
 
 
