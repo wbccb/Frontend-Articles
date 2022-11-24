@@ -1,0 +1,56 @@
+<html lang='en'>
+<head>
+    <meta charset='utf-8'>
+    <title>Vue.js wrapper component example (jquery plugin: select2)</title>
+    <script src='./vue.readonly.js'></script>
+</head>
+<body>
+
+<div>
+    <div id='el'>
+
+    </div>
+
+    <button id="testBtn">original.count++</button>
+    <button id="testBtn1">copy.count++</button>
+</div>
+
+
+<script>
+    const {effect, readonly, reactive, createApp, watchEffect, toRaw, ref, shallowRef} = Vue;
+    const App = {
+        setup(props, ctx) {
+            const original = reactive({count: 0})
+
+            debugger;
+            const copy = readonly(original)
+
+            watchEffect(() => {
+                console.info("----------------------------------------------")
+                // 用来做响应性追踪
+                console.log(copy.count)
+                console.info("----------------------------------------------")
+
+            })
+
+            document.getElementById("testBtn").addEventListener("click", ()=> {
+                // 更改源属性会触发其依赖的侦听器
+                original.count++
+            });
+            document.getElementById("testBtn1").addEventListener("click", ()=> {
+                // 更改该只读副本将会失败，并会得到一个警告
+                copy.count++ // warning!
+            });
+
+
+
+
+
+            return { };
+        },
+    };
+    const app = createApp(App);
+    app.mount("#el");
+</script>
+</body>
+</html>
