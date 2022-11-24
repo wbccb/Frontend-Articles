@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='utf-8'>
+    <title>Vue.js wrapper component example (jquery plugin: select2)</title>
+    <script src='./vue.ref.js'></script>
+</head>
+<body>
+
+<div id='el'></div>
+<button id="testBtn">改变ref里面的Object的某一个key</button>
+
+<script>
+    const {effect, onMounted, reactive, createApp, watchEffect, toRaw, ref, shallowRef, triggerRef} = Vue;
+    const App = {
+        setup(props, ctx) {
+
+            const refData = ref({
+                greet: 'Hello, world'
+            });
+            watchEffect(() => {
+                console.log(refData.value.greet)
+            });
+
+            document.getElementById("testBtn").addEventListener("click", () => {
+                refData.value.greet = 2;
+            });
+
+            return {};
+        },
+    };
+    const app = createApp(App);
+    app.mount("#el");
+</script>
+</body>
+</html>
