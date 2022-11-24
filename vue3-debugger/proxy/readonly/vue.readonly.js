@@ -857,13 +857,14 @@ var Vue = (function (exports) {
             let testSeeklaneCount;
             seeklaneCount++;
             if (key.toString() !== "__v_isRef" && key.toString() !== "__v_skip" && key.toString() !== "Symbol(Symbol.toStringTag)" && key.toString().trim() !=="Symbol(Symbol.toStringTag)") {
+                console.warn("!!!!!!!!!!!!!!!!!!!---------createGetter开始了--------------------");
                 testSeeklaneCount = seeklaneCount;
                 console.error("Reflect.get前:", testSeeklaneCount);
             }
 
 
             if (key.toString() !== "__v_isRef" && key.toString() !== "__v_skip" && key.toString() !== "Symbol(Symbol.toStringTag)" && key.toString().trim() !=="Symbol(Symbol.toStringTag)") {
-                console.error("start=========Reflect.get========start");
+                console.error("start=========Reflect.get(target, key, receiver)========start");
                 console.info("isReadonly is:======================", isReadonly);
                 console.warn(target, receiver);
                 console.warn("key is:======================", key);
@@ -872,7 +873,7 @@ var Vue = (function (exports) {
 
             if (key.toString() !== "__v_isRef" && key.toString() !== "__v_skip" && key.toString() !== "Symbol(Symbol.toStringTag)" && key.toString().trim() !=="Symbol(Symbol.toStringTag)") {
                 console.info("Reflect.get拿到的值是:", `target[${key}]=`, res);
-                console.error("start=========Reflect.get========end");
+                console.error("start=========Reflect.get(target, key, receiver)========end");
             }
             if (key.toString() !== "__v_isRef" && key.toString() !== "__v_skip" && key.toString() !== "Symbol(Symbol.toStringTag)" && key.toString().trim() !=="Symbol(Symbol.toStringTag)") {
                 console.error("Reflect.get结束:", testSeeklaneCount);
@@ -884,6 +885,7 @@ var Vue = (function (exports) {
                 track(target, "get" /* GET */, key);
             }
             if (shallow) {
+                console.error("由于shallow，直接返回根元素", res);
                 return res;
             }
             if (isRef(res)) {
@@ -896,6 +898,7 @@ var Vue = (function (exports) {
                 // here to avoid invalid value warning. Also need to lazy access readonly
                 // and reactive here to avoid circular dependency.
                 console.error("return",isReadonly, isReadonly?"readonly(res)":"reactive(res)");
+                console.warn("!!!!!!!!!!!!!!!!!!!---------createGetter结束了--------------------");
 
                 return isReadonly ? readonly(res) : reactive(res);
             }

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='utf-8'>
+    <title>Vue.js wrapper component example (jquery plugin: select2)</title>
+    <script src='../readonly/vue.readonly.js'></script>
+</head>
+<body>
+
+<div id='el'></div>
+<button id="testBtn">original.count改变根元素</button>
+<button id="testBtn1">original.count.temp</button>
+
+<script>
+    const {effect, shallowReadonly, reactive, createApp, watchEffect, toRaw, ref, shallowReactive} = Vue;
+    const App = {
+        setup(props, ctx) {
+
+            const original = reactive({count: {temp: 3}})
+            const copy = shallowReadonly(original)
+
+            effect(()=> {
+                console.warn("===========copy effect触发===========");
+                console.log(copy.count.temp);
+                console.warn("===========copy effect触发===========");
+            });
+
+            document.getElementById("testBtn").addEventListener("click", ()=> {
+                copy.count = new Date().getTime();
+            });
+            document.getElementById("testBtn1").addEventListener("click", ()=> {
+                copy.count.temp = new Date().getTime();
+            });
+
+            return {};
+        },
+    };
+    const app = createApp(App);
+    app.mount("#el");
+</script>
+</body>
+</html>
