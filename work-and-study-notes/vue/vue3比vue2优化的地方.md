@@ -1,10 +1,10 @@
-> 部分观点可能就是个结论，没有详细展开说
 
 # 类型检查
 > 具体比较可以参考[尤雨溪的知乎回答](https://www.zhihu.com/question/46397274/answer/101193678)
 
 `vue2`使用`javaScript + flow`进行类型校验
-> [flow](http://flowtype.org/) 是 facebook 推出的 js 类型检查工具，可以在编码时检查到类型错误并做出提示
+
+注：[flow](http://flowtype.org/) 是 facebook 推出的 js 类型检查工具，可以在编码时检查到类型错误并做出提示
 
 `vue3`使用`typeScript`进行重写，使用`typeScript`进行类型检查
 ### 两者相比较
