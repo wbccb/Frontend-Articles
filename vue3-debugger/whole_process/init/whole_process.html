@@ -3,7 +3,7 @@
 <head>
     <meta charset='utf-8'>
     <title>Vue.js wrapper component example (jquery plugin: select2)</title>
-    <script src='./vue.global.js'></script>
+    <script src='vue.global.js'></script>
 
     <script>
         const SecondComponent = {
@@ -15,18 +15,20 @@
         }
 
         const InnerComponent = {
-            template: '<span>INNNNNNNNNer</span>'
+            template: '<span>INNNNNNNNNer</span><div>这是InnerComponent的第2个元素</div>'
         }
     </script>
 
     <script type="text/x-template" id="app">
         <div id="app-wrapper">
-            这是第一个item
-            <input type="button"/>
-            <div>这是测试第二个item</div>
-            <InnerComponent></InnerComponent>
+            <div id="app-content1">
+                这是第一个item
+                <input type="button"/>
+                <div>这是测试第二个item</div>
+                <InnerComponent></InnerComponent>
+            </div>
+            <second-component :stat-fat="{'label': '3333'}" test="333"></second-component>
         </div>
-        <second-component :stat-fat="{'label': '3333'}" test="333"></second-component>
     </script>
 
 
@@ -43,6 +45,9 @@
         components: {
             SecondComponent,
             InnerComponent
+        },
+        props: {
+          appProps1: String
         },
         setup(props, ctx) {
             const obj = {};

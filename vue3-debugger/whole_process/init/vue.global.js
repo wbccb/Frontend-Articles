@@ -2516,6 +2516,7 @@ var Vue = (function (exports) {
                 // runtime-compiled render functions using `with` block.
                 const proxyToUse = withProxy || proxy;
                 result = normalizeVNode(render.call(proxyToUse, proxyToUse, renderCache, props, setupState, data, ctx));
+                console.error("renderComponentRoot", render, result);
                 fallthroughAttrs = attrs;
             } else {
                 // functional
@@ -6210,6 +6211,7 @@ var Vue = (function (exports) {
             if (needCallTransitionHooks) {
                 transition.beforeEnter(el);
             }
+            console.error("insert-----------", el, container);
             hostInsert(el, container, anchor);
             if ((vnodeHook = props && props.onVnodeMounted) ||
                 needCallTransitionHooks ||
@@ -6411,6 +6413,8 @@ var Vue = (function (exports) {
                     : fragmentSlotScopeIds;
             }
             if (n1 == null) {
+                console.info("processFragment fragmentStartAnchor", fragmentStartAnchor, container);
+                console.info("processFragment fragmentEndAnchor", fragmentEndAnchor, container);
                 hostInsert(fragmentStartAnchor, container, anchor);
                 hostInsert(fragmentEndAnchor, container, anchor);
                 // a fragment can only have array children
@@ -6598,7 +6602,7 @@ var Vue = (function (exports) {
                         }
                         console.error("componentUpdateFn~~~~~~~~~~~~~~~~~~~~~~~~~~~~~patch----start", currentCount);
                         patch(null, subTree, container, anchor, instance, parentSuspense, isSVG);
-                        console.info("componentUpdateFn~~~~~~~~~~~~~~~~~~~~~~~~~~~~~patch----end", currentCount);
+                        console.warn("componentUpdateFn~~~~~~~~~~~~~~~~~~~~~~~~~~~~~patch----end", currentCount);
                         {
                             endMeasure(instance, `patch`);
                         }
