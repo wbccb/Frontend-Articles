@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='utf-8'>
+    <title>Vue.js wrapper component example (jquery plugin: select2)</title>
+    <script src='./vue.update.js'></script>
+
+    <script>
+        const SecondComponent = {
+            template: '<button>SecondComponent: {{count}}</button>',
+            props: {
+                count: Number
+            }
+        }
+
+        const InnerComponent = {
+            template: '<span>InnerComponent: {{count}}</span><div>这是InnerComponent的第2个元素</div>',
+            props: {
+                count: Number
+            }
+        }
+        const InnerComponent1 = {
+            template: '<span>InnerComponent1: {{count}}</span>',
+            props: {
+                count: Number
+            }
+        }
+    </script>
+
+    <script type="text/x-template" id="app">
+        <div id="app-wrapper">
+            <div id="app-content1">
+                <div id="app-content1_item1">app-content1: app-content1{{proxyCount}}</div>
+                <InnerComponent id="app-content1_item2"  :count="proxyCount"></InnerComponent>
+                <InnerComponent1 id="app-content1_item3"  :count="proxyCount"></InnerComponent1>
+            </div>
+            <second-component :count="proxyCount" id="app-content2"></second-component>
+        </div>
+    </script>
+
+
+
+</head>
+<body>
+
+<div id='el'></div>
+
+<script>
+    const {effect, onMounted, ref, createApp} = Vue;
+    const App = {
+        template: '#app',
+        components: {
+            SecondComponent,
+            InnerComponent,
+            InnerComponent1
+        },
+        props: {
+          appProps1: String
+        },
+        setup(props, ctx) {
+
+            const proxyCount = ref(1);
+
+            onMounted(() => {
+                setTimeout(() => {
+                    console.clear();
+                    proxyCount.value=8; // 触发上面effec执行两次
+                }, 500);
+                console.error("onMounted():" + proxyCount.value);
+            });
+
+            return {
+                proxyCount
+            };
+        },
+    };
+    const app = createApp(App);
+    app.mount("#el");
+</script>
+</body>
+</html>
