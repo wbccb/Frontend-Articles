@@ -28,16 +28,15 @@
     </script>
 
     <script type="text/x-template" id="app">
-        <div id="app-wrapper">
+        <div id="app-wrapper" :class="{'app-test-warpper':proxyCount>1 }" style="{'width': 100}">
             <div id="app-content1">
                 <div id="app-content1_item1">app-content1: app-content1{{proxyCount}}</div>
-                <InnerComponent id="app-content1_item2"  :count="proxyCount"></InnerComponent>
-                <InnerComponent1 id="app-content1_item3"  :count="proxyCount"></InnerComponent1>
+                <InnerComponent id="app-content1_item2" :count="proxyCount"></InnerComponent>
+                <InnerComponent1 id="app-content1_item3" :count="proxyCount"></InnerComponent1>
             </div>
             <second-component :count="proxyCount" id="app-content2"></second-component>
         </div>
     </script>
-
 
 
 </head>
@@ -55,7 +54,7 @@
             InnerComponent1
         },
         props: {
-          appProps1: String
+            appProps1: String
         },
         setup(props, ctx) {
 
@@ -64,7 +63,7 @@
             onMounted(() => {
                 setTimeout(() => {
                     console.clear();
-                    proxyCount.value=8; // 触发上面effec执行两次
+                    proxyCount.value = 8; // 触发上面effec执行两次
                 }, 500);
                 console.error("onMounted():" + proxyCount.value);
             });

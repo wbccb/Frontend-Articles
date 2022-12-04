@@ -1,7 +1,6 @@
 # 个人博客文章
 
 ## 工程化
-
 #### 1. [图解webpack5热更新HRM](https://segmentfault.com/a/1190000042587412)
 #### 2. (WIP)webpack5整体流程分析
 #### 3. (WIP)vue-cli整体流程分析
@@ -22,6 +21,9 @@
 #### 6. (TODO)Vue3源码-编译、AST和转化代码
 #### 7. (TODO)Vue3源码-Vuex
 #### 8. (TODO)Vue3源码-Vue Router
+#### 9. (TODO)Vue3源码-异步组件
+#### 10. (TODO)Vue3源码-父子组件生命周期和props、emits、directives相关浅析
+
 
 
 

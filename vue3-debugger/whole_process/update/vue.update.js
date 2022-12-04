@@ -6400,6 +6400,7 @@ var Vue = (function (exports) {
                     }
                 }
                 if ('value' in newProps) {
+                    console.error("'value' in newProps'value' in newProps'value' in newProps'value' in newProps'value' in newProps'value' in newProps'value' in newProps")
                     hostPatchProp(el, 'value', oldProps.value, newProps.value);
                 }
             }
