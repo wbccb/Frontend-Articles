@@ -16,7 +16,7 @@
 #### 2. Vue3源码-响应式系统-Object、Array数据响应式总结
 #### 3. Vue3源码-响应式系统-Set、Map数据响应式总结
 #### 4. Vue3源码-响应式系统-ref、shallow、readonly相关浅析
-#### 4. (WIP)Vue3源码-整体流程浅析
+#### 4. [Vue3源码-整体流程浅析](https://segmentfault.com/a/1190000042984950)
 #### 5. [Vue3源码-diff算法-patchKeyChildren流程浅析](https://segmentfault.com/a/1190000042974066)
 #### 6. (TODO)Vue3源码-编译、AST和转化代码
 #### 7. (TODO)Vue3源码-Vuex
