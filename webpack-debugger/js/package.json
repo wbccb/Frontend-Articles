@@ -13,6 +13,10 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.16.5",
+    "@babel/preset-env": "^7.16.5",
+    "babel-loader": "^9.1.0",
+    "core-js": "^3.26.1",
     "css-loader": "^6.7.2",
     "file-loader": "^6.2.0",
     "html-loader": "^4.2.0",
@@ -25,5 +29,20 @@
     "webpack-cli": "5.0.0",
     "webpack-dev-server": "^4.11.1"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "browserslist": {
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ],
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ]
+  },
+  "sideEffects": [
+    "*.css"
+  ]
 }
