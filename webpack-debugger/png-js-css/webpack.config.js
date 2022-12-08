@@ -38,17 +38,7 @@ module.exports = {
                         }
                     }],
                 type: 'javascript/auto'
-            },
-            {
-                test: /\.html$/,
-                /**
-                 * html-loader可以处理html中的img图片，可负责将其中的图片引入，然后交由url-loader进行解析
-                 */
-                loader: 'html-loader',
-                options:{
-                    esModule: false,
-                }
-            },
+            }
         ]
     },
     plugins: [
