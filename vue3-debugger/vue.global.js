@@ -816,6 +816,9 @@ var Vue = (function (exports) {
     }
     function createGetter(isReadonly = false, shallow = false) {
         return function get(target, key, receiver) {
+            if(key === "__proto__") {
+                debugger;
+            }
             if (key === "__v_isReactive" /* IS_REACTIVE */) {
                 return !isReadonly;
             }
@@ -844,6 +847,10 @@ var Vue = (function (exports) {
             if (isSymbol(key) ? builtInSymbols.has(key) : isNonTrackableKeys(key)) {
                 return res;
             }
+            // console.info("====get=====");
+            // console.info("target", target);
+            // console.info("key", key);
+            // console.info("====get=====");
             if (!isReadonly) {
                 track(target, "get" /* GET */, key);
             }
@@ -868,6 +875,11 @@ var Vue = (function (exports) {
     const shallowSet = /*#__PURE__*/ createSetter(true);
     function createSetter(shallow = false) {
         return function set(target, key, value, receiver) {
+            // console.error("=========");
+            // console.error("target", target);
+            // console.error("receiver", receiver);
+            // console.error("toRaw(receiver)", toRaw(receiver));
+            // console.error("=========");
             let oldValue = target[key];
             if (isReadonly(oldValue) && isRef(oldValue) && !isRef(value)) {
                 return false;
@@ -885,15 +897,22 @@ var Vue = (function (exports) {
             const hadKey = isArray(target) && isIntegerKey(key)
                 ? Number(key) < target.length
                 : hasOwn(target, key);
+            debugger;
             const result = Reflect.set(target, key, value, receiver);
             // don't trigger if target is something up in the prototype chain of original
             if (target === toRaw(receiver)) {
+                console.error("target", target);
+                console.error("receiver", receiver);
                 if (!hadKey) {
                     trigger(target, "add" /* ADD */, key, value);
                 }
                 else if (hasChanged(value, oldValue)) {
                     trigger(target, "set" /* SET */, key, value, oldValue);
                 }
+            } else {
+                console.warn("target", target);
+                console.warn("receiver", receiver);
+                console.warn("toRaw(receiver)", toRaw(receiver));
             }
             return result;
         };

@@ -15,8 +15,8 @@
   const { effect, onMounted, reactive, createApp } = Vue;
   const App = {
     setup(props, ctx) {
-      const obj = {};
-      const objProto = {count: 1};
+      const obj = {origin: "我是origin"};
+      const objProto = {count: 1, value: "Proto"};
       const proxy = reactive(obj);
       const baseProxy = reactive(objProto);
       Object.setPrototypeOf(proxy, baseProxy);
@@ -26,9 +26,22 @@
         console.error("测试:"+proxy.count);
       })
 
+
+      console.error(obj)
+      console.error(proxy)
+      console.error(baseProxy)
+      console.error("obj.__proto__ === objProto(原始数据)", obj.__proto__ === objProto); //false
+      console.error("proxy.__proto__ === objProto(原始数据)", proxy.__proto__ === objProto);//false
+      console.error("obj.__proto__ === baseProxy(Proxy数据)", obj.__proto__ === baseProxy);//true
+      console.error("proxy.__proto__ === baseProxy(Proxy数据)", proxy.__proto__ === baseProxy);//true
+
+      console.info("obj.count === objProto.count(原始数据)", obj.count === objProto.count, objProto.count);
+      console.info("obj.__proto__ === baseProxy.count(Proxy数据)", obj.__proto__ === baseProxy.count, baseProxy.count);
+
+
       onMounted(()=> {
         setTimeout(()=> {
-          proxy.count++; // 触发上面effec执行两次
+          proxy.count = new Date().getTime(); // 触发上面effec执行两次
         }, 2000);
       });
 
