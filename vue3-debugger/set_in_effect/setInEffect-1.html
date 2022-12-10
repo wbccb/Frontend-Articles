@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='utf-8'>
+    <title>Vue.js wrapper component example (jquery plugin: select2)</title>
+    <script src='./vue.global.js'></script>
+</head>
+<body>
+
+<div id='el'>
+</div>
+
+<script>
+    const {effect, onMounted, reactive, createApp} = Vue;
+    const App = {
+        setup(props, ctx) {
+
+            const proxy = reactive({count: 1});
+
+            // A
+            effect(() => {
+                console.error("第一个effect 依赖收集开始=======");
+                console.error("测试:" + proxy.count);
+                console.error("第一个effect 依赖收集完成=======");
+
+                console.warn("第一个effect 派发更新开始=======");
+                proxy.count = 5;
+                // proxy.count=proxy.count+1; 会触发get和set
+                console.warn("第一个effect 派发更新完成=======");
+            });
+
+            // B
+            effect(() => {
+                console.info("第2个effect 派发更新开始333=======");
+                // 这里触发了proxy的get和set方法
+                // proxy.count = 111只会触发set，不会触发parent返回逻辑
+                proxy.count = proxy.count + 11111111;
+                console.info("第2个effect 派发更新完成444=======");
+            });
+            // proxy.count = proxy.count + 11111111 ===>  B->A->B
+            // proxy.count = 333 =====> B->A
+
+
+            // A
+            // effect(() => {
+            //     console.error("依赖收集开始=======");
+            //     console.error("测试:" + proxy.count);
+            //     console.error("依赖收集完成=======");
+            //
+            //     // B
+            //     effect(() => {
+            //         console.info("派发更新开始333=======");
+            //         proxy.count = new Date().getTime();
+            //         console.info("派发更新完成444=======");
+            //     });
+            // });
+            // A->B->A
+
+
+
+            return {};
+        },
+    };
+    const app = createApp(App);
+    app.mount("#el");
+</script>
+</body>
+</html>
