@@ -12,7 +12,7 @@
 #### 3. [Vue2源码-双端比较diff算法 patchVNode流程浅析](https://segmentfault.com/a/1190000042749546)
 
 ## Vue3
-#### 1. Vue3源码-响应式系统-effect相关浅析
+#### 1. [Vue3源码-响应式系统-依赖收集和派发更新流程浅析](https://segmentfault.com/a/1190000043034490)
 #### 2. Vue3源码-响应式系统-Object、Array数据响应式总结
 #### 3. Vue3源码-响应式系统-Set、Map数据响应式总结
 #### 4. Vue3源码-响应式系统-ref、shallow、readonly相关浅析
