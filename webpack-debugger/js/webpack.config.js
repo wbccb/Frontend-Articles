@@ -2,9 +2,12 @@ const { resolve } = require('path');
 // 引入插件
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
-    entry: './src/index.js',
+    entry: {
+        index: "./src/index.js",
+    },
     output: {
-        filename: 'built.js',
+        filename: "[name].js",
+        chunkFilename: "[id].js",
         path: resolve(__dirname, 'build')
     },
     module: {
