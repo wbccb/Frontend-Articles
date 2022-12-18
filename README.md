@@ -2,14 +2,17 @@
 
 ## 工程化
 #### 1. [图解webpack5热更新HRM](https://segmentfault.com/a/1190000042587412)
-#### 2. (WIP)webpack5整体流程分析
-#### 3. (WIP)vue-cli整体流程分析
-#### 4. (TODO)vite整体流程分析
+#### 2. (WIP)webpack5-整体流程-初始化分析
+#### 3. (WIP)webpack5-整体流程-make阶段分析
+#### 4. (WIP)webpack5-整体流程-seal阶段分析
+#### 5. (WIP)vue-cli整体流程分析
+#### 6. (TODO)vite整体流程分析
 
 ## Vue2
 #### 1. [Vue2源码-响应式原理浅析](https://segmentfault.com/a/1190000042751317)
 #### 2. [Vue2源码-整体流程浅析](https://segmentfault.com/a/1190000042749514)
 #### 3. [Vue2源码-双端比较diff算法 patchVNode流程浅析](https://segmentfault.com/a/1190000042749546)
+#### 4. (TODO)Vue2源码-编译、AST和转化代码
 
 ## Vue3
 #### 1. [Vue3源码-响应式系统-依赖收集和派发更新流程浅析](https://segmentfault.com/a/1190000043034490)
@@ -23,7 +26,7 @@
 #### 9. (TODO)Vue3源码-Vue Router
 #### 10. (TODO)Vue3源码-异步组件
 #### 11. (TODO)Vue3源码-父子组件生命周期和props、emits、directives相关浅析
-
+#### 12. (TODO)Vue3源码-slots相关浅析
 
 
 
