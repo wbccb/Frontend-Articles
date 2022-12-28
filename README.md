@@ -24,9 +24,6 @@
 #### 7. (TODO)Vue3源码-编译、AST和转化代码
 #### 8. (TODO)Vue3源码-Vuex
 #### 9. (TODO)Vue3源码-Vue Router
-#### 10. (TODO)Vue3源码-异步组件
-#### 11. (TODO)Vue3源码-父子组件生命周期和props、emits、directives相关浅析
-#### 12. (TODO)Vue3源码-slots相关浅析
 
 
 
