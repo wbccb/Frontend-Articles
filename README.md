@@ -30,7 +30,6 @@
 
 ### vue-cli
 - (WIP)vue-cli整体流程分析
-- (TODO)vue-loader实现原理分析
 
 ### vite
 - (TODO)vite开发环境打包源码分析
@@ -45,7 +44,7 @@
 - (TODO)Taro编译跨端原理研究
 - (TODO)uni-app编译跨端原理研究
 
-- (TODO)webpack5源码-Parser.parse解析AST流程分析
+- (TODO)webpack5源码-Parser.parse解析AST流程详细分析
 
 
 
