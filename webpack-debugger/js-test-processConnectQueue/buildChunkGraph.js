@@ -74,8 +74,8 @@ const bySetSize = (a, b) => {
 
 function getIsSrc(block) {
 	let request = block.rawRequest || block.request;
-    var isSrc = request && (request.indexOf("A1.js") >= 0 ||
-		request.indexOf("A2.js") >= 0 ||
+    var isSrc = request && (request.indexOf("entry1.js") >= 0 ||
+		request.indexOf("entry2.js") >= 0 ||
 		request.indexOf("item/") >= 0 ||
 		request.indexOf("async/") >= 0);
     return isSrc;
@@ -841,8 +841,8 @@ const visitModules = (
         var temp = [];
         for (var value of resultingAvailableModules.values()) {
             const tempRequest = value.rawRequest;
-            var isSrc = tempRequest.indexOf("A1.js") >= 0 ||
-                tempRequest.indexOf("A2.js") >= 0 ||
+            var isSrc = tempRequest.indexOf("entry1.js") >= 0 ||
+                tempRequest.indexOf("entry2.js") >= 0 ||
                 tempRequest.indexOf("item/") >= 0 ||
                 tempRequest.indexOf("async/") >= 0;
             if (isSrc) {

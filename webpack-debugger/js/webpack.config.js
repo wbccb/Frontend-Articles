@@ -3,7 +3,8 @@ const { resolve } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
     entry: {
-        index: "./src/index.js",
+        app1: "./src/entry1.js",
+        app2: "./src/entry2.js"
     },
     output: {
         filename: "[name].js",
