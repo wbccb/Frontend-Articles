@@ -38,7 +38,8 @@ module.exports = {
                     chunks: 'all',
                     minChunks: 2,
                     name: "test2",
-                    priority: 2
+                    priority: 2,
+                    maxSize: 50
                 }
             }
         }
