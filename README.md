@@ -27,8 +27,9 @@
 ## 工程化
 ### webpack
 - [「Webpack5源码」热更新HRM流程浅析](https://juejin.cn/post/7182087193958023226)
-- webpack5-整体流程-初始化和make阶段分析
-- (WIP)webpack5-整体流程-seal阶段和emit阶段分析
+- (WIP)「Webpack5源码」make整体流程浅析
+- (WIP)「Webpack5源码」seal整体流程浅析(一)
+- (WIP)「Webpack5源码」seal和emit整体流程浅析(二)
 
 ### vue-cli
 - (WIP)vue-cli整体流程分析
