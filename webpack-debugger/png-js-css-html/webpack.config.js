@@ -2,10 +2,10 @@ const { resolve } = require('path');
 // 引入插件
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
-    entry: './src/index.js',
+    entry: './src/entry1.js',
     output: {
-        filename: 'built.js',
-        path: resolve(__dirname, 'build')
+        path: resolve(__dirname, 'build'),
+        clean: true,
     },
     module: {
         rules: [
@@ -56,6 +56,30 @@ module.exports = {
             template: './src/index.html'
         })
     ],
-    mode: 'production'
+    optimization: {
+        chunkIds: "named",
+        splitChunks: {
+            minSize: 1,
+            chunks: 'all',
+            maxInitialRequests: 10,
+            maxAsyncRequests: 10,
+            cacheGroups: {
+                test3: {
+                    chunks: 'all',
+                    minChunks: 3,
+                    name: "test3",
+                    priority: 3
+                },
+                test2: {
+                    chunks: 'all',
+                    minChunks: 2,
+                    name: "test2",
+                    priority: 2,
+                    maxSize: 50
+                }
+            }
+        }
+    },
+    mode: 'development'
 };
 

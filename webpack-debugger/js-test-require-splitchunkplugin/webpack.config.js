@@ -6,9 +6,6 @@ module.exports = {
         groupAssetsByChunk: true
     },
     entry: {
-        app1: "./src/entry1.js",
-        app2: "./src/entry2.js",
-        app3: "./src/entry3.js",
         app4: "./src/entry4.js"
     },
     output: {
@@ -23,7 +20,6 @@ module.exports = {
     optimization: {
         chunkIds: "named",
         splitChunks: {
-            minSize: 1,
             chunks: 'all',
             maxInitialRequests: 10,
             maxAsyncRequests: 10,
