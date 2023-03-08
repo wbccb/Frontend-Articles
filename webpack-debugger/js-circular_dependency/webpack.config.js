@@ -3,7 +3,8 @@ const { resolve } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
     entry: {
-        app1: "./src/es_entry1.js"
+        app1: "./src/ESModule/es_entry1.js",
+        app2: "./src/CommonJS/entry2.js"
     },
     output: {
         filename: "[name].js",
