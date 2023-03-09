@@ -28,8 +28,10 @@
 ### webpack
 - [「Webpack5源码」热更新HRM流程浅析](https://juejin.cn/post/7182087193958023226)
 - (WIP)「Webpack5源码」make整体流程浅析
+- (WIP)「Webpack5源码」make流程_enhanced-resolve解析路径流程浅析
 - (WIP)「Webpack5源码」seal整体流程浅析(一)
-- (WIP)「Webpack5源码」seal和emit整体流程浅析(二)
+- (WIP)「Webpack5源码」seal整体流程浅析(二)
+- (TODO)「Webpack5源码」tapable源码总结
 
 ### vue-cli
 - (WIP)vue-cli整体流程分析
