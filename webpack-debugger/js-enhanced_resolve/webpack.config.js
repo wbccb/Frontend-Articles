@@ -3,22 +3,29 @@ const { resolve } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
     entry: {
-        app1: "./src/entry1.js",
-        app2: "./src/entry2.js"
+        app1: "./src/entry1.js"
+    },
+    resolve: {
+        alias: {
+            aliasTest: resolve(__dirname, 'src/item'),
+        },
+        aliasFields: ['browser'],
     },
     output: {
         filename: "[name].js",
         chunkFilename: "[id].js",
-        path: resolve(__dirname, 'build')
+        path: resolve(__dirname, 'build'),
+        clean: true
     },
     module: {
         rules: []
     },
     optimization: {
+        chunkIds: "named",
         splitChunks: {
             chunks: 'all'
         }
     },
-    mode: 'production'
+    mode: 'development'
 };
 
