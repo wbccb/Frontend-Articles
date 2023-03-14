@@ -3,9 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "",
+  "node222": {
+    "src/dir": "node_src/dir"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "node --inspect-brk ./node_modules/webpack/bin/webpack.js --config  --progress",
+    "build": "node --inspect-brk ./node_modules/webpack/bin/webpack.js --config  webpack.config.js --progress",
     "build-nodebug": "webpack",
     "dev": "node --inspect-brk=9229 ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "dev-nodebug": "webpack-dev-server"
