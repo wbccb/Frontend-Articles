@@ -9,7 +9,13 @@ module.exports = {
         alias: {
             aliasTest: resolve(__dirname, 'src/item'),
         },
-        aliasFields: ['browser'],
+        // aliasFields: ["node22"],
+        // extensionAlias: {
+        //     '.js': ['.ts', '.js'],
+        //     '.mjs': ['.mts', '.mjs'],
+        // },
+        // importsFields: ['browser', 'module', 'main'],
+        // modules: "test/node_modules/test"
     },
     output: {
         filename: "[name].js",
