@@ -15,7 +15,8 @@
 - [Vue3源码-diff算法-patchKeyChildren流程浅析](https://juejin.cn/post/7179469444945543229)
 - [(WIP)Vue3源码-编译流程总结和优化分析](https://github.com/wbccb/Frontend-Articles/issues/2)
 - [(WIP)Vue3相关源码-Vuex分析](https://github.com/wbccb/Frontend-Articles/issues/3)
-- [(WIP)Vue3源码-Vue Router](https://github.com/wbccb/Frontend-Articles/issues/4)
+- [(WIP)Vue3相关源码-Vue Router](https://github.com/wbccb/Frontend-Articles/issues/4)
+- (TODO)Vue3源码-keepAlive、nextTick、v-slot、teleport
 
 ### solid.js
 ### snabbdom.js
@@ -63,6 +64,7 @@
 
 ## 其它
 - (TODO)微信小程序响应式原理研究
+- (TODO)微信小程序JSBridge、APP-JSBridge分析&对比
 - (TODO)微前端qiankun源码研究
 - (TODO)Taro编译跨端原理研究
 - (TODO)uni-app编译跨端原理研究
