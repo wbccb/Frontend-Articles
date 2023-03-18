@@ -17,11 +17,12 @@
 - [(WIP)Vue3相关源码-Vuex分析](https://github.com/wbccb/Frontend-Articles/issues/3)
 - [(WIP)Vue3相关源码-Vue Router](https://github.com/wbccb/Frontend-Articles/issues/4)
 - (TODO)Vue3源码-keepAlive、nextTick、v-slot、teleport
+- (TODO)Vue3相关源码-Pinia
 
 ### solid.js
 ### snabbdom.js
 ### React
-- (TODO)MobX、Redux
+- (TODO)MobX、Redux、Pinia源码分析&对比
 
 ## 工程化
 ### webpack
@@ -36,8 +37,11 @@
 - (WIP)vue-cli整体流程分析
 
 ### vite
-- (TODO)vite开发环境打包源码分析
-- (TODO)vite生产环境打包源码分析
+- (TODO)【基础总结】vite dev模式-常规用法、打包优化
+- (TODO)【源码分析】vite dev模式-本地服务器、esBuild预构建第三方库、转化请求
+- (TODO)【基础总结】vite prod模式-常规用法、打包优化
+- (TODO)【源码分析】vite prod模式-rollup源码整体流程浅析
+- (TODO)【源码分析】vue3打包源码分析
 
 ## Node.js
 - (TODO)Koa原理研究
