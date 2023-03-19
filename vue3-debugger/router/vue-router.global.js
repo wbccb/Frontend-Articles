@@ -363,7 +363,6 @@ var VueRouter = (function (exports, vue) {
    * @param location -
    */
   function createCurrentLocation(base, location) {
-      debugger;
       const { pathname, search, hash } = location;
       // allows hash bases like #, /#, #/, #!, #!/, /#!/, or even /folder#end
       const hashPos = base.indexOf('#');
@@ -563,7 +562,6 @@ var VueRouter = (function (exports, vue) {
    * @param base -
    */
   function createWebHistory(base) {
-      debugger;
       base = normalizeBase(base);
       const historyNavigation = useHistoryStateNavigation(base);
       const historyListeners = useHistoryListeners(base, historyNavigation.state, historyNavigation.location, historyNavigation.replace);
@@ -1213,8 +1211,10 @@ var VueRouter = (function (exports, vue) {
   }
 
   function createRouteRecordMatcher(record, parent, options) {
-      debugger;
-      const parser = tokensToParser(tokenizePath(record.path), options);
+      const tempTokenizePath = tokenizePath(record.path);
+      const parser = tokensToParser(tempTokenizePath, options);
+      console.warn("TokenizePath", JSON.stringify(tempTokenizePath));
+      console.error("parser", parser);
       // warn against params with the same name
       {
           const existingKeys = new Set();
@@ -3673,7 +3673,6 @@ var VueRouter = (function (exports, vue) {
               // this initial navigation is only necessary on client, on server it doesn't
               // make sense because it will create an extra unnecessary navigation and could
               // lead to problems
-              debugger;
               if (isBrowser &&
                   // used for the initial navigation client side to avoid pushing
                   // multiple times when the router is used in multiple apps
