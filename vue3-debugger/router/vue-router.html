@@ -26,9 +26,11 @@
     </script>
     <style>
         .routerLinkWrapper {
+            width: fit-content;
             line-height: 40px;
             height: 40px;
             font-size: 40px;
+            margin: 40px auto;
         }
         .bigFont {
             font-size: 50px;
@@ -49,6 +51,8 @@
     const Child4 = {template: '<div class="bigFont">规则：/:child1(\\d+)</div>'}
     const Child5 = {template: '<div class="bigFont">规则：/:child2+</div>'}
 
+    const TEST = {template: '<div class="bigFont">测试复杂规则TEST</div>'}
+
     // 2. 定义一些路由
     // 每个路由都需要映射到一个组件。
     // 我们后面再讨论嵌套路由。
@@ -59,6 +63,8 @@
         {path: '/child/:id?', component: Child3},
         {path: '/:child1(\\d+)', component: Child4},
         {path: '/:child2+', component: Child5},
+        {path: '/child3/:child1(\\d+)?', component: TEST},
+        {path: '/c\\hil\\d3/new:c\\hild1(\\d+)?', component: TEST},
     ]
 
     // 3. 创建路由实例并传递 `routes` 配置
