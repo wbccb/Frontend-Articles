@@ -19,9 +19,6 @@
             <div class="routerLinkWrapper">
                 <router-link to="/one/two/three">Go to child4</router-link>
             </div>
-            <div class="routerLinkWrapper" id="testBtn">
-                按钮跳转错误的参数
-            </div>
             <!-- route outlet -->
             <!-- component matched by the route will render here -->
             <router-view></router-view>
@@ -35,7 +32,6 @@
             font-size: 40px;
             margin: 40px auto;
         }
-
         .bigFont {
             font-size: 50px;
         }
@@ -62,18 +58,15 @@
     // 我们后面再讨论嵌套路由。
     const routes = [
         {path: '/', component: Home},
-        {path: '/child', component: Child1}, // 静态路由
-        {path: '/child/:id', component: Child2},
-        {path: '/child/:id?', component: Child3},
-        {path: '/:child1(\\d+)', component: Child4},
-        {path: '/:child2+', component: Child5},
-        {path: '/:child1(\\d+)?', component: TEST},
-        {path: '/:child1(\\d+)+', component: TEST}, // 仅匹配数字，匹配 /1, /1/2, 等
-        {path: '/child1', component: TEST},
-        {path: '/child3/:child1(\\d+)?', component: TEST},
-        {path: '/c\\hil\\d3/new:c\\hild1(\\d+)?', component: TEST},
+        {path: '/child', component: TEST}, // 静态路由
+        {path: '/:child', component: TEST},
+        {path: '/:child1(\\d+)', component: TEST},
+        {path: '/:child1?', component: TEST},
+        {path: '/:child1(.*)', component: TEST},
+        {path: '/:child1+', component: TEST},
 
-        {path: '/:child2/:child3/:child4', component: TEST, name: "testBtn"},
+        {path: '/child/:child1', component: TEST},
+        {path: '/child/pre-:child1', component: TEST},
     ]
 
     // 3. 创建路由实例并传递 `routes` 配置
@@ -86,21 +79,8 @@
         strict: true, // applies to all routes
     })
 
-
     const App = {
-        template: '#location',
-        mounted() {
-            document.getElementById("testBtn").addEventListener("click", function () {
-
-                // router.push({"xixi": "name"})
-                router.push({
-                    "name": "testBtn",
-                    params: {
-                        child3: "xixi"
-                    }
-                })
-            });
-        }
+        template: '#location'
     }
 
     // 5. 创建并挂载根实例
