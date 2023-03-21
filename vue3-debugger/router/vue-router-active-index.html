@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='utf-8'>
+    <title>Vue.js wrapper component example (jquery plugin: select2)</title>
+    <script src='./vue.global.js'></script>
+    <script src='./vue-router.global.js'></script>
+    <script type="text/x-template" id="location">
+        <div id="app-wrapper">
+            <div class="routerLinkWrapper">
+                <router-link to="/child/a">跳转到/child/a</router-link>
+            </div>
+            <div class="routerLinkWrapper">
+                <router-link :to="{ name: 'WithChildren' }">跳转到没有路径的子路由</router-link>
+            </div>
+            <!-- route outlet -->
+            <!-- component matched by the route will render here -->
+            <router-view></router-view>
+        </div>
+    </script>
+    <style>
+        .routerLinkWrapper {
+            width: fit-content;
+            line-height: 40px;
+            height: 40px;
+            font-size: 40px;
+            margin: 40px auto;
+        }
+
+        .bigFont {
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body>
+
+<div id='app'></div>
+
+<script>
+    // 1. 定义路由组件.
+    // 也可以从其他文件导入
+    const Home = {template: '<div class="bigFont">目前是home路由</div>'}
+    const TEST = {template: '<div class="bigFont">测试测试</div>'}
+
+    // 2. 定义一些路由
+    // 每个路由都需要映射到一个组件。
+    // 我们后面再讨论嵌套路由。
+    const routes = [
+        {path: '/', component: Home},
+        {
+            path: '/child',
+            component: TEST,
+            name: 'WithChildren',
+            children: [
+                { path: '', name: 'default-child', component: TEST },
+                { path: 'a', name: 'a-child', component: TEST  },
+            ]
+        }
+    ]
+
+    // 3. 创建路由实例并传递 `routes` 配置
+    // 你可以在这里输入更多的配置，但我们在这里
+    // 暂时保持简单
+    const router = VueRouter.createRouter({
+        // 4. 内部提供了 history 模式的实现。为了简单起见，我们在这里使用 hash 模式。
+        history: VueRouter.createWebHashHistory(),
+        routes, // `routes: routes` 的缩写
+        strict: true, // applies to all routes
+    })
+
+
+    const App = {
+        template: '#location'
+    }
+
+    // 5. 创建并挂载根实例
+    const app = Vue.createApp(App);
+    //确保 _use_ 路由实例使
+    //整个应用支持路由。
+    app.use(router)
+
+    app.mount('#app')
+</script>
+</body>
+</html>
