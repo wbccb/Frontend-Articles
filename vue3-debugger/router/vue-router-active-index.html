@@ -11,7 +11,10 @@
                 <router-link to="/child/a">跳转到/child/a</router-link>
             </div>
             <div class="routerLinkWrapper">
-                <router-link :to="{ name: 'WithChildren' }">跳转到没有路径的子路由</router-link>
+                <router-link :to="{ name: 'WithChildren' }">跳转到父路由/child</router-link>
+            </div>
+            <div class="routerLinkWrapper">
+                <router-link :to="{ name: 'default-child' }">跳转到没有路径的子路由/child</router-link>
             </div>
             <!-- route outlet -->
             <!-- component matched by the route will render here -->
