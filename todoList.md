@@ -23,6 +23,8 @@
 ### snabbdom.js
 ### React
 - (TODO)MobX、Redux、Pinia源码分析&对比
+- mini-React的github构建
+> 看源码写文章速度太慢，写mini-React能够加快进度
 
 ## 工程化
 ### webpack
