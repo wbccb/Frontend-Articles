@@ -22,6 +22,7 @@
 ### webpack
 - [「Webpack5源码」热更新HRM流程浅析](https://juejin.cn/post/7182087193958023226)
 
+### vite
 
 # 【知识总结】
 
