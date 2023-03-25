@@ -13,17 +13,21 @@
 - [Vue3源码-响应式系统-ref、shallow、readonly相关浅析](https://juejin.cn/post/7177178450287919162)
 - [Vue3源码-整体渲染流程浅析](https://juejin.cn/post/7179851550943084603)
 - [Vue3源码-diff算法-patchKeyChildren流程浅析](https://juejin.cn/post/7179469444945543229)
-- (整理中)Vue3源码-编译流程总结和优化分析
-- (整理中)Vue3相关源码-Vuex分析
-- (整理中)Vue3相关源码-Vue Router源码解析(一)
-- (整理中)Vue3相关源码-Vue Router源码解析(二)
+- (初稿完成，整理中)Vue3源码-编译流程总结和优化分析
+- (初稿完成，整理中)Vue3相关源码-Vuex分析
+- (初稿完成，整理中)Vue3相关源码-Vue Router源码解析(一)
+- (初稿完成，整理中)Vue3相关源码-Vue Router源码解析(二)
 
 ## 工程化
 ### webpack
 - [「Webpack5源码」热更新HRM流程浅析](https://juejin.cn/post/7182087193958023226)
+- (初稿完成，整理中)「Webpack5源码」make整体流程浅析
+- (初稿完成，整理中)「Webpack5源码」make阶段enhanced-resolve解析流程浅析
+- (初稿完成，整理中)「Webpack5源码」seal整体流程浅析(一)
+- (初稿完成，整理中)「Webpack5源码」seal整体流程浅析(二)
 
 ### vite
-- 「vite源码」预构建流程分析
+- (TODO)「vite源码」预构建流程分析
 
 # 【知识总结】
 
