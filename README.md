@@ -23,6 +23,7 @@
 - [「Webpack5源码」热更新HRM流程浅析](https://juejin.cn/post/7182087193958023226)
 
 ### vite
+- 「vite源码」预构建流程分析
 
 # 【知识总结】
 
@@ -32,6 +33,6 @@
 - [【基础】esbuild使用详解](https://github.com/wbccb/blog/issues/8)
 - [【基础】gulp使用详解](https://github.com/wbccb/blog/issues/9)
 
-# 【手写源码】
-- [mini-vite](https://github.com/wbccb/mini-vite)
 
+# 【代码项目】
+- [mini-vite](https://github.com/wbccb/mini-vite)
