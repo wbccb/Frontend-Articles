@@ -29,6 +29,7 @@
 - [【基础】vue-router使用详解](https://github.com/wbccb/blog/issues/5)
 - [【基础】vite使用详解](https://github.com/wbccb/blog/issues/6)
 - [【基础】rollup使用详解](https://github.com/wbccb/blog/issues/7)
+- [【基础】esbuild使用详解](https://github.com/wbccb/blog/issues/8)
 
 # 【手写源码】
 - [mini-vite](https://github.com/wbccb/mini-vite)
