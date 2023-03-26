@@ -39,7 +39,7 @@
 - [【基础】rollup使用详解](https://github.com/wbccb/blog/issues/7)
 - [【基础】esbuild使用详解](https://github.com/wbccb/blog/issues/8)
 - [【基础】gulp使用详解](https://github.com/wbccb/blog/issues/9)
-- [【简单版】webpack、rollup、gulp、esbuild多种构建库的比较](https://github.com/wbccb/blog/issues/10)
+- [【简单版】前端构建工具比较](https://github.com/wbccb/blog/issues/12)
 - [【基础】Node.js使用详解](https://github.com/wbccb/blog/issues/11)
 
 
