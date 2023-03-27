@@ -1,5 +1,5 @@
 # 【个人博客文章】
-
+> 内容有一定深度&字数在5k以上的文章集合
 ## 前端
 ### Vue2
 - [Vue2源码-响应式原理浅析](https://juejin.cn/post/7179389498860503099)
@@ -33,7 +33,7 @@
 - (TODO)【源码版】webpack、rollup、gulp、esbuild多种构建库的比较
 
 # 【知识总结】
-
+> 内容较为简单或者字数较少的文章集合
 - [【基础】vue-router使用详解](https://github.com/wbccb/blog/issues/5)
 - [【基础】vite使用详解](https://github.com/wbccb/blog/issues/6)
 - [【基础】rollup使用详解](https://github.com/wbccb/blog/issues/7)
