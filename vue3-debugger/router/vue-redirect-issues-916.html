@@ -72,12 +72,18 @@
     })
 
     router.beforeEach((to, from)=> {
+        if(to.path === "/") {
+            return true;
+        }
         if (to.path.includes('/login')) {
+            console.warn("login路由！");
             return true;
         }else{
             console.error("触发重定向，回到login");
+            return false;
             return {
-                path:'/login'
+                path:'/login',
+                // force: true
             }
         }
     })
