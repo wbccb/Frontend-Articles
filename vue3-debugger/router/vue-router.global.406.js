@@ -410,6 +410,7 @@ var VueRouter = (function (exports, vue) {
         // can trigger twice
         let pauseState = null;
         const popStateHandler = ({ state, }) => {
+            debugger;
             const to = createCurrentLocation(base, location);
             const from = currentLocation.value;
             const fromState = historyState.value;
@@ -3152,6 +3153,7 @@ var VueRouter = (function (exports, vue) {
                             return error;
                         }
                         if (isNavigationFailure(error, 2 /* NAVIGATION_GUARD_REDIRECT */)) {
+                            debugger;
                             // Here we could call if (info.delta) routerHistory.go(-info.delta,
                             // false) but this is bug prone as we have no way to wait the
                             // navigation to be finished before calling pushWithRedirect. Using
