@@ -27,7 +27,7 @@
 - (初稿完成，整理中)「Webpack5源码」seal整体流程浅析(二)
 
 ### vite
-- (TODO)「vite源码」预构建流程分析
+- (WIP)「vite4源码」dev模式源码分析
 
 ### 综合
 - (TODO)【源码版】webpack、rollup、gulp、esbuild多种构建库的比较
