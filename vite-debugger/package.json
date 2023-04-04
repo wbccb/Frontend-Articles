@@ -1,18 +1,19 @@
 {
-  "version": "1.0.0",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build"
-  },
-  "dependencies": {
-    "lodash": "4.17.21",
-    "lodash-es": "4.17.21",
-    "vue": "3.2.47"
-  },
-  "devDependencies": {
-    "@vitejs/plugin-vue": "4.1.0",
-    "@vitejs/plugin-vue-jsx": "3.0.1",
-    "@vue/compiler-sfc": "3.2.47",
-    "vite": "4.3.0-beta.1"
-  }
+    "version": "1.0.0",
+    "scripts": {
+        "debug": "vite --debug --force",
+        "debug-chrome": "node --inspect-brk=9229 ./node_modules/vite/bin/vite.js --force",
+        "build": "vite build"
+    },
+    "dependencies": {
+        "lodash": "4.17.21",
+        "lodash-es": "4.17.21",
+        "vue": "3.2.47"
+    },
+    "devDependencies": {
+        "@vitejs/plugin-vue": "4.1.0",
+        "@vitejs/plugin-vue-jsx": "3.0.1",
+        "@vue/compiler-sfc": "3.2.47",
+        "vite": "4.3.0-beta.1"
+    }
 }
