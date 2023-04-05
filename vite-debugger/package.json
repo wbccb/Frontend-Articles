@@ -1,6 +1,7 @@
 {
     "version": "1.0.0",
     "scripts": {
+        "dev": "vite",
         "debug": "vite --debug --force",
         "debug-chrome": "node --inspect-brk=9229 ./node_modules/vite/bin/vite.js --force",
         "build": "vite build"
