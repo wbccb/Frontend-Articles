@@ -8,5 +8,8 @@ export default defineConfig({
     define: {
         TEST_ONE: true,
         TEST_TWO: 2
+    },
+    experimental: {
+        hmrPartialAccept: true
     }
 });

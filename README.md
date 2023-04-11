@@ -27,10 +27,17 @@
 - (初稿完成，整理中)「Webpack5源码」seal整体流程浅析(二)
 
 ### vite
-- (WIP)「vite4源码」dev模式源码分析
+- (初稿完成，等待二次优化)「vite4源码」dev模式整体流程浅析（一）
+- (初稿完成，等待二次优化)「vite4源码」dev模式整体流程浅析（二）
+- (WIP)「vite4源码」dev模式 mini-vite构建（三）
 
 ### 综合
 - (TODO)【源码版】webpack、rollup、gulp、esbuild多种构建库的比较
+
+## 个人开发者github开源库
+### ruoyi
+- (WIP)(RuoYi)Vue3&Vite、ElementPlus权限管理系统源码分析
+
 
 # 【知识总结】
 > 内容较为简单或者字数较少的文章集合
