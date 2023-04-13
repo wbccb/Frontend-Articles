@@ -29,15 +29,17 @@
 ### vite
 - (初稿完成，等待二次优化)「vite4源码」dev模式整体流程浅析（一）
 - (初稿完成，等待二次优化)「vite4源码」dev模式整体流程浅析（二）
-- (WIP)「vite4源码」dev模式 mini-vite构建（三）
+- (WIP)「vite4源码」dev模式整体流程-miniVite（三）
 
 ### 综合
 - (TODO)【源码版】webpack、rollup、gulp、esbuild多种构建库的比较
 
-## 个人开发者github开源库
-### ruoyi
-- (WIP)(RuoYi)Vue3&Vite、ElementPlus权限管理系统源码分析
+## 其它github开源库(相比较Vue、Webpack较为简单)
+### [ruoyi](https://github.com/yangzongzhuan/RuoYi-Vue3)
+- RuoYi源码-PC前端源码浅析
 
+### [Geeker-Admin](https://github.com/HalseySpicy/Geeker-Admin)
+- Geeker-Admin源码-PC前端源码浅析
 
 # 【知识总结】
 > 内容较为简单或者字数较少的文章集合
@@ -50,6 +52,7 @@
 - [【基础】Node.js使用详解](https://github.com/wbccb/blog/issues/11)
 - [【基础】React18使用详解](https://github.com/wbccb/blog/issues/13)
 - [【简单版】flutter、rn、uni-app比较](https://github.com/wbccb/blog/issues/14)
+- (TODO)【基础】Vue + Vite SSR使用详解
 
 
 # 【代码项目】
