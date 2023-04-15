@@ -9,9 +9,11 @@
     "dependencies": {
         "lodash": "4.17.21",
         "lodash-es": "4.17.21",
+        "react": "^18.2.0",
         "vue": "3.2.47"
     },
     "devDependencies": {
+        "@originjs/vite-plugin-commonjs": "^1.0.3",
         "@vitejs/plugin-vue": "4.1.0",
         "@vitejs/plugin-vue-jsx": "3.0.1",
         "@vue/compiler-sfc": "3.2.47",
