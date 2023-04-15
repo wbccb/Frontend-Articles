@@ -27,7 +27,7 @@
 - (初稿完成，整理中)「Webpack5源码」seal整体流程浅析(二)
 
 ### vite
-- (初稿完成，等待二次优化)「vite4源码」dev模式整体流程浅析（一）
+- [「vite4源码」dev模式整体流程浅析（一）](https://segmentfault.com/a/1190000043673403)
 - (初稿完成，等待二次优化)「vite4源码」dev模式整体流程浅析（二）
 - (WIP)「vite4源码」dev模式整体流程-miniVite（三）
 
