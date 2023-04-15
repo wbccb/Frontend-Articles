@@ -10,6 +10,7 @@
         "lodash": "4.17.21",
         "lodash-es": "4.17.21",
         "react": "^18.2.0",
+        "sass": "^1.62.0",
         "vue": "3.2.47"
     },
     "devDependencies": {
