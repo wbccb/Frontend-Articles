@@ -35,6 +35,22 @@
             moduleA_child_getters1(state, getters, rootState, rootGetters) {
                 return state.todos.filter(todo => todo.done);
             }
+        },
+        actions: {
+            someAction ({ dispatch, commit, getters, rootGetters }) {
+                // getters.someGetter // -> 'foo/someGetter'
+                // rootGetters.someGetter // -> 'someGetter'
+                // rootGetters['bar/someGetter'] // -> 'bar/someGetter'
+                //
+                dispatch('someOtherAction') // -> 'foo/someOtherAction'
+                // dispatch('someOtherAction', null, { root: true }) // -> 'someOtherAction'
+                //
+                // commit('someMutation') // -> 'foo/someMutation'
+                // commit('someMutation', null, { root: true }) // -> 'someMutation'
+            },
+            someOtherAction (ctx, payload) {
+                console.error("触发了someOtherAction");
+            }
         }
     }
 
@@ -108,6 +124,10 @@
     app.use(store);
 
     window.store = store;
+
+    setTimeout(()=> {
+        store.dispatch("a/a_modules/someAction");
+    }, 2000);
 
     app.mount('#app')
 </script>
