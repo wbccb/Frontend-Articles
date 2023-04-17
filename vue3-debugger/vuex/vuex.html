@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='utf-8'>
+    <title>Vue.js wrapper component example (jquery plugin: select2)</title>
+    <script src='./vue.global.js'></script>
+    <script src='./vuex.global.js'></script>
+</head>
+<body>
+
+<div id='app'></div>
+
+<script>
+    const {createApp} = Vue;
+    const {createStore} = Vuex;
+
+    const moduleA_child = {
+        namespaced: true,
+        state() {
+            return {
+                id: "moduleA_child",
+                count: 11,
+                todos: [
+                    {id: 1, text: '...', done: true},
+                    {id: 2, text: '...', done: false}
+                ]
+            }
+        },
+        mutations: {
+            increment(state) {
+                state.count++;
+            }
+        },
+        getters: {
+            moduleA_child_getters1(state, getters, rootState, rootGetters) {
+                return state.todos.filter(todo => todo.done);
+            }
+        }
+    }
+
+
+    const moduleA = {
+        namespaced: true,
+        state() {
+            return {
+                id: "moduleA",
+                count: 11,
+                todos: [
+                    {id: 1, text: '...', done: true},
+                    {id: 2, text: '...', done: false}
+                ]
+            }
+        },
+        mutations: {
+            increment(state) {
+                state.count++;
+            }
+        },
+        getters: {
+            moduleA_getters1(state, getters, rootState, rootGetters) {
+                return state.todos.filter(todo => todo.done);
+            }
+        },
+        modules: {
+            a_modules: moduleA_child
+        }
+    }
+
+    // 创建一个新的 store 实例
+    const store = createStore({
+        noNamespace: true,
+        state() {
+            return {
+                id: "rootStore",
+                count: 0
+            }
+        },
+        mutations: {
+            increment(state) {
+                state.count++
+            }
+        },
+        modules: {
+            a: moduleA
+        }
+    });
+
+
+    const Counter = {
+        // 状态
+        data() {
+            return {
+                count: 0
+            }
+        },
+        // 视图
+        template: `
+          <div>{{ count }}</div>
+        `,
+        // 操作
+        methods: {
+            increment() {
+                this.count++
+            }
+        }
+    }
+    const app = createApp(Counter);
+    app.use(store);
+
+    window.store = store;
+
+    app.mount('#app')
+</script>
+</body>
+</html>
