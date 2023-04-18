@@ -4,7 +4,6 @@
 
 ### Vue3
 - (初稿完成，整理中)Vue3源码-编译流程总结和优化分析
-- (初稿完成，整理中)Vue3相关源码-Vuex分析
 - (TODO)Vue3相关源码-Pinia
 - (TODO)Vue3源码-keepAlive、nextTick、v-slot、teleport
 
@@ -23,14 +22,19 @@
 ### vue-cli
 - (WIP)vue-cli整体流程分析
 
-### vite
-- (TODO)「vite源码」预构建流程分析
 
 ### rollup
 - (TODO)【源码分析】vue3打包源码分析
 
 ### 综合
 - (TODO)【源码版】webpack、rollup、gulp、esbuild多种构建库的比较
+
+
+# 跨端开发框架
+- (TODO)微信小程序原理解析
+- (TODO)Taro编译跨端原理研究
+- (TODO)uni-app编译跨端原理研究
+
 
 ## Node.js
 - (TODO)Koa2源码分析
@@ -60,14 +64,21 @@
 - (TODO)微信小程序JSBridge、APP-JSBridge分析&对比
 - (TODO)多种微前端技术研究对比
 - (TODO)微前端qiankun源码研究
-- (TODO)Taro编译跨端原理研究
-- (TODO)uni-app编译跨端原理研究
+
 - (TODO)SSR服务器渲染
 
 - (TODO)webpack5源码-Parser.parse解析AST流程详细分析
 
+## 其它github开源库(相比较Vue、Webpack较为简单)
+### [ruoyi](https://github.com/yangzongzhuan/RuoYi-Vue3)
+- RuoYi源码-PC前端源码浅析
+
+### [Geeker-Admin](https://github.com/HalseySpicy/Geeker-Admin)
+- Geeker-Admin源码-PC前端源码浅析
+
 # 【知识总结】
 > 内容较为简单或者字数较少的文章集合
+- (TODO)【基础】Vue + Vite SSR使用详解
 
 
 # 【代码项目】
