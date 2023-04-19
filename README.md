@@ -31,10 +31,9 @@
 - [「vite4源码」dev模式整体流程浅析（二）](https://segmentfault.com/a/1190000043674823)
 
 
-
 # 跨端开发框架
-- (WIP)【uni-app & 微信小程序 & React Native】跨端原理初探
-- (WIP) 微信小程序JSBridge和APP JSBridge
+-【uni-app&微信小程序&React Native】跨端原理初探(https://segmentfault.com/a/1190000043700260)
+- (WIP) 微信小程序JSBridge和APP JSBridge对比
 
 
 # 【知识总结】
