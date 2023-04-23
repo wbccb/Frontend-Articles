@@ -1,3 +1,9 @@
+// 本文是为了更加理解https://pomb.us/build-your-own-react/的整体流程，所以自己手写的代码
+// 整体功能没有进行测试是否跑通，不能作为生产环境使用，可以直接使用
+// https://codesandbox.io/s/didact-8-21ost
+// 作为生产环境的代码使用
+
+
 window.requestIdleCallback = window.requestIdleCallback || function (handler) {
     // 这个并不是 polyfill ，因为它在功能上并不相同； setTimeout() 并不会让你利用空闲时段，
     // 而是使你的代码在情况允许时执行你的代码，以使我们可以尽可能地避免造成用户体验性能表现延迟的后果
@@ -19,6 +25,36 @@ const ELEMENT_TYPE = {
 }
 
 const miniReact = {
+    hookIndex: null,
+    wipFiber: null,
+    useState(initial) {
+        // 是否之前就存在该hook
+        const oldHook =
+            this.wipFiber.alternate &&
+            this.wipFiber.alternate.hooks &&
+            this.wipFiber.alternate.hooks[this.hookIndex];
+        const hook = {
+            state: oldHook ? oldHook.state : initial,
+            queue: []
+        }
+
+        const setState = (action) => {
+            hook.queue.push(action);
+
+            // 模仿render()函数
+            this.wipRoot = {
+                dom: this.currentRoot.dom,
+                props: this.currentRoot.props,
+                alternate: this.currentRoot
+            }
+            this.nextUnitOfWork = this.wipRoot;
+            this.deletions = [];
+        }
+
+        this.wipFiber.hooks.push(hook);
+        this.hookIndex++;
+        return [hook.state, setState];
+    },
     createTextElement(text) {
         return {
             type: ELEMENT_TYPE.TEXT_ELEMENT,
@@ -86,7 +122,7 @@ const miniReact = {
         if (!fiber) return;
 
         let domParentFiber = fiber.parent;
-        while(!domParentFiber.dom) {
+        while (!domParentFiber.dom) {
             domParentFiber = domParentFiber.parent;
         }
 
@@ -109,7 +145,7 @@ const miniReact = {
         this.commitRoot(fiber.sibling);
     },
     commitDelete(fiber, domParent) {
-        if(fiber.dom) {
+        if (fiber.dom) {
             domParent.removeChild(fiber.dom);
         } else {
             this.commitDelete(fiber.child, domParent);
@@ -125,7 +161,7 @@ const miniReact = {
         // 特殊处理事件on
         Object.keys(prevProps)
             .filter(isEvent)
-            .filter((key)=> {
+            .filter((key) => {
                 return !(key in nextProps) || isAddOrUpdate(prevProps, nextProps)
             })
             .forEach(name => {
@@ -229,10 +265,16 @@ const miniReact = {
         }
     },
     updateFunctionComponent(fiber) {
+        // useState放在Component中，hooks是跟fiber进行绑定，考虑最简单情况
+        // 只有一个useXXX，只有一个function Component，因此只需要一个wipFiber
+        this.wipFiber = fiber;
+        this.hookIndex = 0;
+        this.wipFiber.hooks = [];
+
         const children = [fiber.type(fiber.props)];
         this.reconcileChildren(fiber, elements);
     },
-    updateHostComponent(fiber){
+    updateHostComponent(fiber) {
         if (!fiber.dom) {
             fiber.dom = this.createDom(fiber);
         }
@@ -244,7 +286,7 @@ const miniReact = {
         // 执行每一个unit的任务：
         const isFunctionComponent = fiber.type instanceof Function;
 
-        if(isFunctionComponent) {
+        if (isFunctionComponent) {
             this.updateFunctionComponent(fiber);
         } else {
             this.updateHostComponent(fiber);
@@ -253,8 +295,6 @@ const miniReact = {
         // if(fiber.parent) {
         //     fiber.parent.dom.appendChild(fiber.dom);
         // }
-
-
 
 
         if (fiber.child) {
@@ -274,12 +314,25 @@ const miniReact = {
 
 };
 
+/** @jsx Didact.createElement */
+function Counter() {
+    const [state, setState] = miniReact.useState(1)
+    return (
+        <h1 onClick={() => setState(c => c + 1)}>
+            Count: {state}
+        </h1>
+    )
+}
+
+const element1 = <Counter/>
+
 
 const element = miniReact.createElement(
     "div",
     {id: "foo"},
     miniReact.createElement("a", null, "bar"),
-    miniReact.createElement("b")
+    miniReact.createElement("b"),
+    element1
 )
 const container = document.getElementById("root")
 miniReact.render(element, container);
