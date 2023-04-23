@@ -84,11 +84,44 @@ const miniReact = {
     },
     commitWork(fiber) {
         if (!fiber) return;
-
         const domParent = fiber.parent.dom;
-        domParent.appendChild(fiber.dom);
+        // 以前这里只有新增的逻辑，现在我们要完善更新和删除逻辑
+        if (fiber.effectTag === "PLACEMENT" && fiber.dom !== null) {
+            // 新增逻辑
+            domParent.appendChild(fiber.dom);
+        } else if (fiber.effectTag === "PLACEMENT" && fiber.dom !== null) {
+            this.updateDom(
+                fiber.dom,
+                fiber.alternate.props,
+                fiber.props
+            );
+        } else if (fiber.effectTag === "DELETION") {
+            domParent.removeChild(fiber.dom);
+        }
+
         this.commitWork(fiber.child);
         this.commitRoot(fiber.sibling);
+    },
+    updateDom(dom, prevProps, nextProps) {
+        const isProperty = key => key !== "children";
+        const isGone = (prev, next) => key => !(key in next);
+        const isAddOrUpdate = (prev, next) => key => prev[key] !== next[key];
+
+        // 删除旧的props
+        Object.keys(prevProps)
+            .filter(isProperty)
+            .filter(isGone(prevProps, nextProps))
+            .forEach(name => {
+                dom[name] = "";
+            });
+
+        // 赋值新的props
+        Object.keys(nextProps)
+            .filter(isProperty)
+            .filter(isAddOrUpdate(prevProps, nextProps))
+            .forEach(name => {
+                dom[name] = nextProps[name];
+            });
     },
     nextUnitOfWork: null,
     workLoop(deadline) {
@@ -123,7 +156,7 @@ const miniReact = {
             const sameType = oldFiber && element && element.type === oldFiber.type;
             let newFiber = null;
 
-            if(sameType) {
+            if (sameType) {
                 newFiber = {
                     type: oldFiber.type,
                     props: element.props,
@@ -132,7 +165,7 @@ const miniReact = {
                     alternate: oldFiber,
                     efectTag: "UPDATE"
                 }
-            } else if(element && !sameType) {
+            } else if (element && !sameType) {
                 newFiber = {
                     type: element.type,
                     props: element.props,
@@ -141,11 +174,10 @@ const miniReact = {
                     alternate: null,
                     effectTag: "PLACEMENT"
                 }
-            } else if(oldFiber && !sameType) {
+            } else if (oldFiber && !sameType) {
                 oldFiber.effectTag = "DELETION";
                 this.deletions.push(oldFiber);
             }
-
 
 
             if (index === 0) {
