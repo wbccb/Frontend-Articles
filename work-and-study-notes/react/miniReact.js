@@ -106,6 +106,21 @@ const miniReact = {
         const isProperty = key => key !== "children";
         const isGone = (prev, next) => key => !(key in next);
         const isAddOrUpdate = (prev, next) => key => prev[key] !== next[key];
+        const isEvent = key => key.startsWith("on")
+
+
+        // 特殊处理事件on
+        Object.keys(prevProps)
+            .filter(isEvent)
+            .filter((key)=> {
+                return !(key in nextProps) || isAddOrUpdate(prevProps, nextProps)
+            })
+            .forEach(name => {
+                // name=onClick onTouch等等
+                const eventType = name.toLowerCase().substring(2);
+                dom.removeEventListener(eventType, prevProps[name]);
+            });
+
 
         // 删除旧的props
         Object.keys(prevProps)
@@ -114,6 +129,15 @@ const miniReact = {
             .forEach(name => {
                 dom[name] = "";
             });
+
+        // 特殊处理事件on
+        Object.keys(nextProps)
+            .filter(isEvent)
+            .filter(isAddOrUpdate(prevProps, nextProps))
+            .forEach(name => {
+                const eventType = name.toLowerCase().substring(2);
+                dom.addEventListener(eventType, nextProps[name]);
+            })
 
         // 赋值新的props
         Object.keys(nextProps)
