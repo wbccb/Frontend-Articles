@@ -1,36 +1,26 @@
 # 【个人博客文章】
 > 内容有一定深度&字数在5k以上的文章集合
 ## 前端
-
 ### Vue3
-- (初稿完成，整理中)Vue3源码-编译流程总结和优化分析
 - (TODO)Vue3相关源码-Pinia
 - (TODO)Vue3源码-keepAlive、nextTick、v-slot、teleport
-
+- (TODO)Vue3源码-scheduler和nextTick相关源码分析
+> 响应式变化更新要花费很多时间，如何安排微任务和宏任务
 ### React
 - (TODO)MobX、Redux、Pinia源码分析&对比
-- mini-React的github构建
 
 ## 工程化
 ### webpack
-- (初稿完成，整理中)「Webpack5源码」make整体流程浅析
-- (初稿完成，整理中)「Webpack5源码」make阶段enhanced-resolve解析流程浅析
-- (初稿完成，整理中)「Webpack5源码」seal整体流程浅析(一)
-- (初稿完成，整理中)「Webpack5源码」seal整体流程浅析(二)
 - (TODO)「Webpack5源码」tapable源码总结
-
 ### vue-cli
 - (WIP)vue-cli整体流程分析
-
-
 ### rollup
 - (TODO)【源码分析】vue3打包源码分析
-
 ### 综合
 - (TODO)【源码版】webpack、rollup、gulp、esbuild多种构建库的比较
 
 
-# 跨端开发框架
+## 跨端开发框架
 - (TODO)Taro编译跨端原理研究
 - (TODO)微信小程序整体源码解析
 - (TODO)uni-app转化为微信小程序相关源码分析
@@ -79,6 +69,8 @@
 # 【知识总结】
 > 内容较为简单或者字数较少的文章集合
 - (TODO)【基础】Vue + Vite SSR使用详解
+- [【简单版】前端构建工具比较](https://github.com/wbccb/Frontend-Articles/issues/12)
+- [【简单版】flutter、rn、uni-app比较](https://github.com/wbccb/Frontend-Articles/issues/14)
 
 
 # 【代码项目】
