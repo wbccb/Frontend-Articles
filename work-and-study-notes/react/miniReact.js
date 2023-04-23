@@ -84,7 +84,13 @@ const miniReact = {
     },
     commitWork(fiber) {
         if (!fiber) return;
-        const domParent = fiber.parent.dom;
+
+        let domParentFiber = fiber.parent;
+        while(!domParentFiber.dom) {
+            domParentFiber = domParentFiber.parent;
+        }
+
+        const domParent = domParentFiber.dom;
         // 以前这里只有新增的逻辑，现在我们要完善更新和删除逻辑
         if (fiber.effectTag === "PLACEMENT" && fiber.dom !== null) {
             // 新增逻辑
@@ -96,11 +102,18 @@ const miniReact = {
                 fiber.props
             );
         } else if (fiber.effectTag === "DELETION") {
-            domParent.removeChild(fiber.dom);
+            this.commitDelete(fiber, domParent);
         }
 
         this.commitWork(fiber.child);
         this.commitRoot(fiber.sibling);
+    },
+    commitDelete(fiber, domParent) {
+        if(fiber.dom) {
+            domParent.removeChild(fiber.dom);
+        } else {
+            this.commitDelete(fiber.child, domParent);
+        }
     },
     updateDom(dom, prevProps, nextProps) {
         const isProperty = key => key !== "children";
@@ -215,19 +228,33 @@ const miniReact = {
             index++;
         }
     },
-    performUnitOfWork(fiber) {
-        // 执行每一个unit的任务：
+    updateFunctionComponent(fiber) {
+        const children = [fiber.type(fiber.props)];
+        this.reconcileChildren(fiber, elements);
+    },
+    updateHostComponent(fiber){
         if (!fiber.dom) {
             fiber.dom = this.createDom(fiber);
+        }
+        const elements = fiber.props.children;
+        // 区分哪些能够复用哪些要删除哪些要新增
+        this.reconcileChildren(fiber, elements);
+    },
+    performUnitOfWork(fiber) {
+        // 执行每一个unit的任务：
+        const isFunctionComponent = fiber.type instanceof Function;
+
+        if(isFunctionComponent) {
+            this.updateFunctionComponent(fiber);
+        } else {
+            this.updateHostComponent(fiber);
         }
 
         // if(fiber.parent) {
         //     fiber.parent.dom.appendChild(fiber.dom);
         // }
 
-        const elements = fiber.props.children;
-        // 区分哪些能够复用哪些要删除哪些要新增
-        this.reconcileChildren(fiber, elements);
+
 
 
         if (fiber.child) {
