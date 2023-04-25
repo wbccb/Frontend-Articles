@@ -1,0 +1,44 @@
+<!-- jsonDemo.html -->
+<html>
+
+<head>
+    <title>jsonp_demo</title>
+</head>
+
+<body>
+<script>
+    // 本地服务器手写
+    function jsonp(url, params, fn) {
+
+        // 拼接参数
+        const paramsArray = [];
+        Object.keys(params).forEach(key => {
+            paramsArray.push(`${key}=${encodeURIComponent(params[key])}`);
+        });
+        const fnName = "callback" + new Date().getTime();
+        paramsArray.push(`callback=${encodeURIComponent(fnName)}`);
+
+        const scriptUrl = url + "?" + paramsArray.join("&");
+        const scriptElement = document.createElement("script");
+        scriptElement.src = scriptUrl;
+
+        // 本质就是请求一个script
+        window[fnName] = (data) => {
+            document.body.removeChild(scriptElement);
+            fn(data);
+        }
+
+
+        document.body.appendChild(scriptElement);
+    }
+
+    jsonp("http://localhost:3002", {
+        test: 1,
+        name: 11
+    }, (data) => {
+        console.error("拿到返回值:", data);
+    });
+</script>
+</body>
+
+</html>
