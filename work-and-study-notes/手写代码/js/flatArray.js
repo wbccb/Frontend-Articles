@@ -13,6 +13,9 @@ function flat(array) {
 
 // reduce版本 + 加入平铺层数控制
 function flatNumber(array, number) {
+    if(number <= 0) {
+        return array;
+    }
     return array.reduce(function (prev, current) {
         // prev之前累计的结果
         // current目前遍历到的item
