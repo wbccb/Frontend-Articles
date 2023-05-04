@@ -10,11 +10,13 @@
             justify-content: center;
         }
     </style>
+    <script src="./lib/spark-md5.js"></script>
 </head>
 <body>
 
 <div class="body-wrapper">
-    <input type="file"/>
+    <input type="file"
+           accept=".zip" id="file" onchange="handleFileChange(this.files)">
 
     <div>
         <span>上传进度</span>
@@ -25,6 +27,83 @@
 </div>
 
 <script>
+    // 1. 获取文件
+    window.handleFileChange = async (fileArray) => {
+        if (!fileArray || fileArray.length <= 0) {
+            console.error("没有文件路径");
+            return;
+        }
+
+        const file = fileArray[0];
+        // file= {
+        //     lastModified: 1683179248190
+        //     lastModifiedDate:Thu May 04 2023 13:47:28 GMT+0800 (中国标准时间) {}
+        //     name:"vue3-debugger.zip"
+        //     size:2152423
+        //     type:"application/zip"
+        //     webkitRelativePath:""
+        // }
+        const {fileHash} = await getChunkFile(file, 1524230);
+        console.info("拿到的fileHash", fileHash);
+        console.log("fileChunkList", fileChunkList);
+    }
+
+    const fileChunkList = [];
+    // 2. 获取文件分块：使用fileReader
+    function getChunkFile(file, chunkSize) {
+        return new Promise((resolve, reject) => {
+
+            // 逻辑结构：
+            // 初始化API
+            // 调用readChunkFile()
+            // fileReader读取成功后再次触发readChunkFile()
+            // 调用一定次数后，结束读取，进行resolve(chunksArray)
+
+            // 1. 初始化API
+            let blobSlice = File.prototype.slice;
+            let chunks = Math.ceil(file.size / chunkSize);
+            let currentChunk = 0;
+            let spark = new window.SparkMD5.ArrayBuffer();
+            let fileReader = new FileReader();
+
+            fileReader.onload = (e) => {
+                const chunk = e.target.result;
+                spark.append(chunk);
+                currentChunk++;
+                if (currentChunk < chunks) {
+                    // 3. fileReader读取成功后再次触发readChunkFile()
+                    readChunkFile();
+                } else {
+                    // 4. 调用一定次数后，结束读取，进行resolve(chunksArray)
+                    let fileHash = spark.end();
+                    resolve({fileHash});
+                }
+            }
+
+            fileReader.onerror = () => {
+                // TODO
+            }
+
+            //2. 调用readChunkFile()
+            readChunkFile();
+
+            function readChunkFile() {
+                let start = currentChunk * chunkSize;
+                let end = start + (chunkSize >= file.size ? file.size : start + chunkSize);
+                let chunk = blobSlice.call(file, start, end);
+                fileChunkList.push({
+                    chunk: chunk,
+                    size: chunk.size,
+                    name: file.name,
+                    percentage: 0
+                });
+                fileReader.readAsArrayBuffer(chunk);
+            }
+
+
+        });
+    }
+
 
 </script>
 </body>
