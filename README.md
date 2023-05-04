@@ -13,7 +13,7 @@
 - [Vue3源码-响应式系统-ref、shallow、readonly相关浅析](https://juejin.cn/post/7177178450287919162)
 - [Vue3源码-整体渲染流程浅析](https://juejin.cn/post/7179851550943084603)
 - [Vue3源码-diff算法-patchKeyChildren流程浅析](https://juejin.cn/post/7179469444945543229)
-- (初稿完成，整理中)Vue3源码-编译流程总结和优化分析
+- [Vue3源码-运行时编译模板&优化总结](https://segmentfault.com/a/1190000043750497)
 - [Vue3相关源码-Vuex源码解析](https://segmentfault.com/a/1190000043686292)
 - [Vue3相关源码-Vue Router源码解析(一)](https://juejin.cn/post/7215967109184503864)
 - [Vue3相关源码-Vue Router源码解析(二)](https://juejin.cn/post/7215967453931077692)
