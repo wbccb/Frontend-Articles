@@ -52,7 +52,7 @@
         //     type:"application/zip"
         //     webkitRelativePath:""
         // }
-        const {fileHash} = await getChunkFile(file, 1524230);
+        const {fileHash} = await getChunkFile(file, defaultChunkSize);
         console.info("拿到的fileHash", fileHash);
         console.log("fileChunkList", fileChunkList);
 
