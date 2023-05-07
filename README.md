@@ -28,8 +28,8 @@
 ## 工程化
 ### webpack
 - [「Webpack5源码」热更新HRM流程浅析](https://juejin.cn/post/7182087193958023226)
-- [「Webpack5源码」make阶段（流程图）分析](https://segmentfault.com/a/1190000043759210)
-- [「Webpack5源码」enhanced-resolve路径解析库源码分析](https://segmentfault.com/a/1190000043759251)
+- [「Webpack5源码」make阶段（流程图）分析](https://segmentfault.com/a/1190000043759679)
+- [「Webpack5源码」enhanced-resolve路径解析库源码分析](https://segmentfault.com/a/1190000043759683)
 - (初稿完成，整理中)「Webpack5源码」seal整体流程浅析(一)
 - (初稿完成，整理中)「Webpack5源码」seal整体流程浅析(二)
 
