@@ -11,7 +11,7 @@
 <button id="testBtn">改变ref里面的Object的某一个key</button>
 
 <script>
-    const {effect, onMounted, reactive, createApp, watchEffect, toRaw, ref, shallowRef, triggerRef} = Vue;
+    const {effect, onMounted, reactive, createApp, watchEffect, toRaw, ref, shallowRef, triggerRef, watch} = Vue;
     const App = {
         setup(props, ctx) {
 
@@ -24,6 +24,23 @@
 
             document.getElementById("testBtn").addEventListener("click", () => {
                 refData.value.greet = 2;
+            });
+
+            // 改变model.value.layout的值，能够同时改变model.value.layout的值
+            // 互相持有
+            const model = ref({
+                layout: 'vertical'
+            });
+            const obj = reactive({
+                formProps: model
+            });
+            setTimeout(()=> {
+                // model.value.layout = 'inline333';
+                obj.formProps.layout = "inline333";
+            }, 2000);
+            watch([obj, model], ()=> {
+                console.log("obj改变了", obj.formProps.layout);
+                console.log("model改变了", model.value.layout);
             });
 
             return {};
