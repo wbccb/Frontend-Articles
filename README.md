@@ -30,8 +30,9 @@
 - [「Webpack5源码」热更新HRM流程浅析](https://juejin.cn/post/7182087193958023226)
 - [「Webpack5源码」make阶段（流程图）分析](https://segmentfault.com/a/1190000043759679)
 - [「Webpack5源码」enhanced-resolve路径解析库源码分析](https://segmentfault.com/a/1190000043759683)
-- (初稿完成，整理中)「Webpack5源码」seal整体流程浅析(一)
+- [「Webpack5源码」seal阶段（流程图）分析(一)](https://segmentfault.com/a/1190000043813899)
 - (初稿完成，整理中)「Webpack5源码」seal整体流程浅析(二)
+- (初稿完成，整理中)「Webpack5源码」seal整体流程浅析(三)
 
 ### vite
 - [「vite4源码」dev模式整体流程浅析（一）](https://segmentfault.com/a/1190000043673403)
