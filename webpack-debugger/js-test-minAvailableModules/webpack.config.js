@@ -6,6 +6,7 @@ module.exports = {
         groupAssetsByChunk: true
     },
     entry: {
+        // app: ["./src/entry1.js", "./src/entry2.js"]
         entry1: "./src/entry1.js",
         // entry2: "./src/entry2.js"
     },
@@ -22,23 +23,23 @@ module.exports = {
         chunkIds: "named",
         splitChunks: {
             chunks: 'all',
-            maxInitialRequests: 10,
-            maxAsyncRequests: 10,
-            cacheGroups: {
-                test3: {
-                    chunks: 'all',
-                    minChunks: 3,
-                    name: "test3",
-                    priority: 3
-                },
-                test2: {
-                    chunks: 'all',
-                    minChunks: 2,
-                    name: "test2",
-                    priority: 2,
-                    maxSize: 50
-                }
-            }
+            // maxInitialRequests: 10,
+            // maxAsyncRequests: 10,
+            // cacheGroups: {
+            //     test3: {
+            //         chunks: 'all',
+            //         minChunks: 3,
+            //         name: "test3",
+            //         priority: 3
+            //     },
+            //     test2: {
+            //         chunks: 'all',
+            //         minChunks: 2,
+            //         name: "test2",
+            //         priority: 2,
+            //         maxSize: 50
+            //     }
+            // }
         }
     },
     mode: 'development'

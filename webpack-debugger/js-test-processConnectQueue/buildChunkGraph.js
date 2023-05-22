@@ -1022,6 +1022,7 @@ const visitModules = (
                                 statForkedResultModulesCount += newSet.size;
                                 cachedMinAvailableModules = newSet;
                                 info.minAvailableModulesOwned = true;
+                                debugger;
                                 info.minAvailableModules = newSet;
                                 changed = true;
                                 continue merge;
