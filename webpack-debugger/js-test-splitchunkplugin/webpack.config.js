@@ -22,6 +22,7 @@ module.exports = {
     },
     optimization: {
         chunkIds: "named",
+        usedExports: true,
         splitChunks: {
             minSize: 1,
             chunks: 'all',

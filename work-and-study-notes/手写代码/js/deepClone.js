@@ -27,6 +27,10 @@ function getInit(target) {
     return new Ctor();
 }
 
+function isObject(target) {
+    return typeof target === "object" && target !== null;
+}
+
 function deepClone(target, map = new Map()) {
     if(!isObject(target)) {
         // 非引用类型直接返回
@@ -54,7 +58,7 @@ function deepClone(target, map = new Map()) {
             });
         }
         else if(type === setType) {
-            target.forEach((value, value)=> {
+            target.forEach((value)=> {
                 cloneTarget.add(deepClone(value));
             });
         }
@@ -139,3 +143,10 @@ function cloneFunction(target) {
         return eval(funcString);
     }
 }
+
+//
+// var setData = new Set();
+// setData.add(1);
+//
+// var cloneSetData = deepClone(setData);
+// console.log(cloneSetData);
