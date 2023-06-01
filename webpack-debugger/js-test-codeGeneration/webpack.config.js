@@ -6,6 +6,9 @@ module.exports = {
         groupAssetsByChunk: true
     },
     entry: {
+        app1: "./src/entry1.js",
+        app2: "./src/entry2.js",
+        app3: "./src/entry3.js",
         app4: "./src/entry4.js"
     },
     output: {
@@ -34,8 +37,7 @@ module.exports = {
                     chunks: 'all',
                     minChunks: 2,
                     name: "test2",
-                    priority: 2,
-                    maxSize: 50
+                    priority: 2
                 }
             }
         }
