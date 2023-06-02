@@ -32,7 +32,7 @@
 - [「Webpack5源码」enhanced-resolve路径解析库源码分析](https://segmentfault.com/a/1190000043759683)
 - [「Webpack5源码」seal阶段（流程图）分析(一)](https://segmentfault.com/a/1190000043813899)
 - [「Webpack5源码」seal阶段分析(二)-SplitChunksPlugin源码](https://segmentfault.com/a/1190000043845501)
-- (初稿完成，整理中)「Webpack5源码」seal整体流程浅析(三)
+- [「Webpack5源码」seal阶段分析(三)-生成代码&runtime](https://segmentfault.com/a/1190000043857275)
 
 ### vite
 - [「vite4源码」dev模式整体流程浅析（一）](https://segmentfault.com/a/1190000043673403)
