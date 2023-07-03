@@ -20,9 +20,8 @@
 
 
 
-### React18
+### React18(正在研究...)
 - [React初探-构建最小化的React](https://github.com/wbccb/Frontend-Articles/issues/16)
-- (TODO)React相关源码-Redux源码解析
 
 
 ## 工程化
@@ -41,7 +40,7 @@
 
 ## 跨端开发框架
 - [【uni-app&微信小程序&React Native】跨端原理初探](https://segmentfault.com/a/1190000043700260)
-- (WIP) 微信小程序JSBridge和APP JSBridge对比
+- (TODO) 微信小程序JSBridge和APP JSBridge对比
 
 # Node.js
 - [Koa源码解析&手写](https://segmentfault.com/a/1190000043960744)
@@ -69,4 +68,3 @@
 - [mini-Vue-admin](https://github.com/wbccb/mini-Vue-admin)
 - [mini-Vue-admin](https://github.com/wbccb/mini-Vue-admin)
 - [BG-CMS-Koa2](https://github.com/wbccb/BG-CMS-Koa2)
-- 
