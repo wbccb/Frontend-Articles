@@ -66,5 +66,5 @@
 
 # 【代码项目】
 - [mini-Vue-admin](https://github.com/wbccb/mini-Vue-admin)
-- [mini-Vue-admin](https://github.com/wbccb/mini-Vue-admin)
+- [BG-CMS-React](https://github.com/wbccb/BG-CMS-React)
 - [BG-CMS-Koa2](https://github.com/wbccb/BG-CMS-Koa2)
