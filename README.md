@@ -73,5 +73,4 @@
 
 # 【代码项目】
 - [mini-Vue-admin](https://github.com/wbccb/mini-Vue-admin)
-- [React-questionnaire](https://github.com/wbccb/low-code-questionnaire)
 - [BG-CMS-Koa2](https://github.com/wbccb/BG-CMS-Koa2)
