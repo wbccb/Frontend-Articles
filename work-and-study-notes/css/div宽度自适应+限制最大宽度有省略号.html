@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .wrapper {
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            bottom: 0px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .content {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid black;
+            background-color: rgba(0, 0, 0, 0.03);
+        }
+
+        .item1, .item2 {
+            width: 100%;
+            height: 20px;
+            line-height: 20px;
+            font-size: 12px;
+
+            overflow: hidden;
+            background-color: red;
+        }
+        .item3, .item4 {
+            width: 300px;
+
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .item_content {
+            background-color: blue;
+            color: white;
+        }
+
+        .item_flex {
+            display: flex;
+        }
+        .item_content_flex {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .item_inline-block {
+
+        }
+        .item_content_inline-block {
+            display: inline-block;
+            width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <div class="content">
+        <div class="item1 item_flex">
+            <div class="item_content item_content_flex">红色是父容器；蓝色是子内容；使用display: flex</div>
+        </div>
+        <div class="item2 item_inline-block">
+            <div class="item_content_inline-block"><span class="item_content">红色是父容器；蓝色是子内容；使用display: inline-block</span></div>
+        </div>
+        <div class="item3 item_flex">
+            <div class="item_content item_content_flex">红色是父容器；蓝色是子内容；使用display: flex;最大宽度测试</div>
+        </div>
+        <div class="item4 item_inline-block">
+            <div class="item_content item_content_inline-block"><span>红色是父容器；蓝色是子内容；使用display: inline-block;最大宽度测试</span></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
