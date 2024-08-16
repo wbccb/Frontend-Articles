@@ -22,12 +22,13 @@
 
 ### React18(正在研究...)
 - [(基本定稿)React初探-构建最小化的React](https://github.com/wbccb/mini-react/blob/main/docs/1-%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86%26%E5%8E%9F%E7%90%86%E5%88%9D%E6%8E%A2/0-(WIP)React%E5%88%9D%E6%8E%A2-%E6%9E%84%E5%BB%BA%E6%9C%80%E5%B0%8F%E5%8C%96%E7%9A%84React.md)
-- [(初稿)React18源码-整体渲染流程解析](https://github.com/wbccb/mini-react/blob/main/docs/3-%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/React18%E6%BA%90%E7%A0%81(Concurrent%E6%A8%A1%E5%BC%8F)-%E6%95%B4%E4%BD%93%E6%B8%B2%E6%9F%93%E6%B5%81%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89.md)
-- (TODO)React18源码-diff算法解析
-- (TODO)React18源码-Scheduler解析
-- (TODO)React18源码-hooks解析
-- (TODO)Redux源码解析（Flux、Redux、Vuex、MobX对比，穿插在每一篇文章下面的总结）
-- (TODO)MobX源码解析（Flux、Redux、Vuex、MobX对比，穿插在每一篇文章下面的总结）
+- (WIP)React18源码-整体渲染流程解析
+- (WIP)React18源码-hooks初始化以及同步更新渲染流程分析 8.17
+- (TODO)React18源码-diff算法解析 8.17
+- (TODO)React18源码-Context分析 8.18
+- (TODO)React18源码-合成事件分析 8.18
+- (TODO)React18源码-并发更新
+- (TODO)Redux、Mobx、Flux源码解析
 - (TODO)React Router源码解析
 
 
