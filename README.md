@@ -22,15 +22,13 @@
 
 ### React18(正在研究...)
 - [(基本定稿)React初探-构建最小化的React](https://github.com/wbccb/mini-react/blob/main/docs/1-%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86%26%E5%8E%9F%E7%90%86%E5%88%9D%E6%8E%A2/0-(WIP)React%E5%88%9D%E6%8E%A2-%E6%9E%84%E5%BB%BA%E6%9C%80%E5%B0%8F%E5%8C%96%E7%9A%84React.md)
-- (WIP)React18源码-整体渲染流程解析
-- (WIP)React18源码-hooks初始化以及同步更新渲染流程分析
-- (TODO)React18源码-diff算法解析
-- (TODO)React18源码-Context分析
-- (TODO)React18源码-合成事件分析
-- (TODO)React18源码-并发更新
-- (TODO)Redux、Mobx、Flux源码解析
-- (TODO)React Router源码解析
-
+- [(WIP)首次渲染流程分析(一)](https://github.com/wbccb/mini-react/blob/main/docs/3-%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/1.(WIP)%E9%A6%96%E6%AC%A1%E6%B8%B2%E6%9F%93%E6%B5%81%E7%A8%8B%E5%88%86%E6%9E%90(%E4%B8%80).md)
+- [(WIP)首次渲染流程分析(二)](https://github.com/wbccb/mini-react/blob/main/docs/3-%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/2.(WIP)%E9%A6%96%E6%AC%A1%E6%B8%B2%E6%9F%93%E6%B5%81%E7%A8%8B%E5%88%86%E6%9E%90(%E4%BA%8C).md)
+- [(WIP)hooks&更新渲染流程分析](https://github.com/wbccb/mini-react/blob/main/docs/3-%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/3.(WIP)hooks%26%E6%9B%B4%E6%96%B0%E6%B8%B2%E6%9F%93%E6%B5%81%E7%A8%8B%E5%88%86%E6%9E%90.md)
+- [(WIP)常见hook源码分析](https://github.com/wbccb/mini-react/blob/main/docs/3-%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/4.(WIP)%E5%B8%B8%E8%A7%81hook%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90.md)
+- [(WIP)合成事件](https://github.com/wbccb/mini-react/blob/main/docs/3-%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/5.(WIP)%E5%90%88%E6%88%90%E4%BA%8B%E4%BB%B6.md)
+- (TODO)lanes模型
+- (TODO)并发模式下的渲染更新流程分析
 
 ## 工程化
 ### webpack
@@ -67,7 +65,9 @@
 
 
 # 【电子书】
-- [canvas、webGL、three.js](https://github.com/wbccb/canvas-web3D)
+- [canvas、richText、svg相关](https://github.com/wbccb/canvas-web3D)
+- [mini-react](https://github.com/wbccb/mini-react)
+- [大模型相关](https://github.com/wbccb/llm-study)
 - [mini-vite](https://github.com/wbccb/mini-vite)
 - [mini-koa](https://github.com/wbccb/mini-koa)
 
