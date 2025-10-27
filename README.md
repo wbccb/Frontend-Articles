@@ -78,3 +78,4 @@
 # 【个人项目】
 - [mini-Vue-admin](https://github.com/wbccb/mini-Vue-admin)
 - [BG-CMS-Koa2](https://github.com/wbccb/BG-CMS-Koa2)
+- [TripNexus](https://github.com/wbccb/trip-nexus)
